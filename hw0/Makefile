@@ -1,4 +1,4 @@
-CC = gcc -Wall
+CC = gcc -g
 all:
 	$(CC) main.c -o main
 	$(CC) map.c -o map
