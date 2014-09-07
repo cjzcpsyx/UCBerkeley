@@ -11,7 +11,14 @@
 
     <script>
       d3.json("data.json", function(data) {
-        var canvas = d3.select("body").append("svg").attr("width", 500).attr("height", 500);
+        // Margin Convention
+        var margin = {top: 20, right: 10, bottom: 20, left: 10};
+        var width = 960 - margin.left - margin.right;
+        var height = 500 - margin.top - margin.bottom;
+        var canvas = d3.select("body").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("main").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        // d3 scales
+        var xScale = d3.scale.linear([0, width]);
+        var yScale;
         canvas.selectAll("circle").data(data).enter().append("circle").attr("r", 5);
       });
     </script>
