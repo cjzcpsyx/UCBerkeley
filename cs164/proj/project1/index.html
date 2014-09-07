@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>CS164: Language Popularity</title>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
   </head>
 
@@ -80,10 +80,20 @@
               return margin.top + yScale(d.nbRepos);
             });
           texts.transition().duration(500).style("opacity", 1);
-          var xAxis = d3.svg.axis().scale(xScale).tickSize(2,2).orient("bottom").tickFormat(d3.format("d"));
+          var xAxis = d3.svg.axis().scale(xScale).ticks(10).tickSize(2,2).orient("bottom").tickFormat(d3.format("d"));
           var yAxis = d3.svg.axis().scale(yScale).tickSize(2,2).orient("left");
           x.call(xAxis);
+          canvas.append("text")
+            .attr("x", width )
+            .attr("y",  height )
+            .style("font-size", "14px")
+            .text("Year");
           y.call(yAxis);
+          canvas.append("text")
+            .attr("x", margin.top)
+            .attr("y",  margin.left)
+            .style("font-size", "14px")
+            .text("# repos");
         }
         refresh();
         selector.on("click", function() {
