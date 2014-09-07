@@ -1007,7 +1007,7 @@
         // Drawing and updating
         var circles = canvas.selectAll("circle").data(data);
         var texts = canvas.selectAll("text").data(data);
-        circles.exit().transition().duration(500).style("opacity", 0).remove();
+        circles.exit().transition().duration(500).remove();
         circles.enter().append("circle").style("opacity", 0);
         setTimeout(function() {
           circles
@@ -1022,7 +1022,7 @@
         setTimeout(function() {
           circles.transition().duration(500).style("opacity", 1);
         }, 1000);
-        texts.exit().transition().duration(500).style("opacity", 0).remove();
+        texts.exit().transition().duration(500).remove();
         texts.enter().append("text").style("opacity", 0);
         setTimeout(function() {
           texts
