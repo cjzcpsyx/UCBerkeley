@@ -1,120 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
   <head>
-    <meta charset="utf-8">
-    <title>CS164: Language Popularity</title>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Ucberkeley : Projects of UCB CS courses">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ucberkeley</title>
   </head>
 
   <body>
-    <div class="container"></div>
-    <select id="paradigmSelect">
-    </select>
-    <script>
-      d3.json("data.json", function(raw_data) {
-        // Margin Convention
-        var margin = {top: 20, right: 100, bottom: 20, left: 50};
-        var width = 960 - margin.left - margin.right;
-        var height = 500 - margin.top - margin.bottom;
-        var canvas = d3.select(".container").append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-          .attr("transform", "translate(" + 0 + "," + 0 + ")")
-        var x = d3.select("svg").append("g")
-          .attr("transform", "translate(" + margin.left + "," + (height + margin.top).toString() + ")");
-        var y = d3.select("svg").append("g")
-          .attr("transform", "translate(" + (margin.left*2) + "," + margin.top + ")");
-        var selections = _.uniq(_.flatten(_.map(raw_data, function(d) {
-          return d.paradigms
-        })));
-        var selector = d3.select("#paradigmSelect");
-        selector.selectAll("option").data(selections).enter().append("option").text(function(d) {
-          return d;
-        });
-        var option = selector.node().value;
-        var refresh = function() {
-          data = _.filter(raw_data, function(d) {
-            return _.contains(d.paradigms, option);
-          });
-          // d3 scales
-          var xMin = d3.min(data, function(d) {
-            return d.year - 1;
-          });
-          var xMax = d3.max(data, function(d) {
-            return d.year + 1;
-          });
-          var yMin = d3.min(data, function(d) {
-            return d.nbRepos - 10;
-          });
-          var yMax = d3.max(data, function(d) {
-            return d.nbRepos + 10;
-          });
-          var xScale = d3.scale.linear().domain([xMin, xMax]).range([margin.left, width]);
-          var yScale = d3.scale.log().domain([yMax, yMin]).range([margin.top, height]);
-          // Drawing and updating
-          var circles = canvas.selectAll("circle").data(data);
-          var texts = canvas.selectAll("text").data(data);
-          circles.exit().transition().duration(500).style("opacity", 0).remove();
-          circles.enter().append("circle").style("opacity", 0);
-          setTimeout(function() {
-            circles
-              .transition().duration(500).attr("cx", function(d) {
-                return margin.left + xScale(d.year);
-              })
-              .attr("cy", function(d) {
-                return margin.top + yScale(d.nbRepos);
-              })
-              .attr("r", 5);
-          }, 500);
-          setTimeout(function() {
-            circles.transition().duration(500).style("opacity", 1);
-          }, 1000);
-          texts.exit().transition().duration(500).style("opacity", 0).remove();
-          texts.enter().append("text").style("opacity", 0);
-          setTimeout(function() {
-            texts
-              .text(function(d) {
-                return d.name;
-              })
-              .attr("fill", "red")
-              .transition().duration(500).attr("x", function(d) {
-                return margin.left + xScale(d.year);
-              })
-              .attr("y", function(d) {
-                return margin.top + yScale(d.nbRepos);
-              });
-          }, 500);
-          setTimeout(function() {
-            texts.transition().duration(500).style("opacity", 1);
-          }, 1000);
-          var xAxis = d3.svg.axis().scale(xScale).ticks(10).tickSize(2,2).orient("bottom").tickFormat(d3.format("d"));
-          var yAxis = d3.svg.axis().scale(yScale).tickSize(2,2).orient("left");
-          setTimeout(function () {
-            x.transition().duration(500).call(xAxis);
-          }, 500);
-          canvas.append("text")
-            .attr("x", width )
-            .attr("y",  height )
-            .style("font-size", "14px")
-            .text("Year");
-          setTimeout(function() {
-            y.transition().duration(500).call(yAxis);
-          }, 500);
-          canvas.append("text")
-            .attr("x", margin.top)
-            .attr("y",  margin.left)
-            .style("font-size", "14px")
-            .text("# repos");
-        }
-        refresh();
-        selector.on("click", function() {
-          option = selector.node().value;
-          refresh();
-        });
-      });
-    </script>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cjzcpsyx/UCBerkeley">View on GitHub</a>
+
+          <h1 id="project_title">Ucberkeley</h1>
+          <h2 id="project_tagline">Projects of UCB CS courses</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/cjzcpsyx/UCBerkeley/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cjzcpsyx/UCBerkeley/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+
+<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+
+<pre><code>$ cd your_repo_root/repo_name
+$ git fetch origin
+$ git checkout gh-pages
+</code></pre>
+
+<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+
+<h3>
+<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+
+<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+
+<h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+
+<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ucberkeley maintained by <a href="https://github.com/cjzcpsyx">cjzcpsyx</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
