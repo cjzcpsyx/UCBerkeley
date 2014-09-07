@@ -5,23 +5,92 @@
     <meta charset="utf-8">
     <title>CS164: Language Popularity</title>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
   </head>
 
   <body>
-
+    <div class="container"></div>
+    <select id="paradigmSelect">
+    </select>
     <script>
-      d3.json("data.json", function(data) {
+      d3.json("data.json", function(raw_data) {
         // Margin Convention
-        var margin = {top: 20, right: 10, bottom: 20, left: 10};
+        var margin = {top: 20, right: 100, bottom: 20, left: 50};
         var width = 960 - margin.left - margin.right;
         var height = 500 - margin.top - margin.bottom;
-        var canvas = d3.select("body").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("main").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        // d3 scales
-        var xScale = d3.scale.linear([0, width]);
-        var yScale;
-        canvas.selectAll("circle").data(data).enter().append("circle").attr("r", 5);
+        var canvas = d3.select(".container").append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform", "translate(" + 0 + "," + 0 + ")")
+        var x = d3.select("svg").append("g")
+          .attr("transform", "translate(" + margin.left + "," + (height + margin.top).toString() + ")");
+        var y = d3.select("svg").append("g")
+          .attr("transform", "translate(" + (margin.left*2) + "," + margin.top + ")");
+        var selections = _.uniq(_.flatten(_.map(raw_data, function(d) {
+          return d.paradigms
+        })));
+        var selector = d3.select("#paradigmSelect");
+        selector.selectAll("option").data(selections).enter().append("option").text(function(d) {
+          return d;
+        });
+        var option = selector.node().value;
+        var refresh = function() {
+          data = _.filter(raw_data, function(d) {
+            return _.contains(d.paradigms, option);
+          });
+          // d3 scales
+          var xMin = d3.min(data, function(d) {
+            return d.year - 1;
+          });
+          var xMax = d3.max(data, function(d) {
+            return d.year + 1;
+          });
+          var yMin = d3.min(data, function(d) {
+            return d.nbRepos - 10;
+          });
+          var yMax = d3.max(data, function(d) {
+            return d.nbRepos + 10;
+          });
+          var xScale = d3.scale.linear().domain([xMin, xMax]).range([margin.left, width]);
+          var yScale = d3.scale.log().domain([yMax, yMin]).range([margin.top, height]);
+          // Drawing and updating
+          var circles = canvas.selectAll("circle").data(data);
+          var texts = canvas.selectAll("text").data(data);
+          circles.exit().transition().duration(500).style("opacity", 0).remove();
+          circles.enter().append("circle").style("opacity", 0);
+          circles.attr("cx", function(d) {
+              return margin.left + xScale(d.year);
+            })
+            .attr("cy", function(d) {
+              return margin.top + yScale(d.nbRepos);
+            })
+            .attr("r", 5);
+          circles.transition().duration(500).style("opacity", 1);
+          texts.exit().transition().duration(500).style("opacity", 0).remove();
+          texts.enter().append("text").style("opacity", 0);
+          texts.text(function(d) {
+              return d.name;
+            })
+            .attr("fill", "red")
+            .attr("x", function(d) {
+              return margin.left + xScale(d.year);
+            })
+            .attr("y", function(d) {
+              return margin.top + yScale(d.nbRepos);
+            });
+          texts.transition().duration(500).style("opacity", 1);
+          var xAxis = d3.svg.axis().scale(xScale).tickSize(2,2).orient("bottom").tickFormat(d3.format("d"));
+          var yAxis = d3.svg.axis().scale(yScale).tickSize(2,2).orient("left");
+          x.call(xAxis);
+          y.call(yAxis);
+        }
+        refresh();
+        selector.on("click", function() {
+          option = selector.node().value;
+          refresh();
+        });
       });
     </script>
   </body>
-
 </html>
