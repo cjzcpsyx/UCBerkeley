@@ -11,4 +11,5 @@ int main() {
     printf("process limit: %d\n", (int) lim.rlim_cur);
     getrlimit(RLIMIT_NOFILE, &lim);
     printf("max file descriptors: %d\n", (int) lim.rlim_cur);
+    return 0;
 }
