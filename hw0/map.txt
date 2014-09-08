@@ -1,1 +1,33 @@
-1. 
+1.
+000000000040058c g     F .text  00000000000000d5              main
+0000000000400544 g     F .text  0000000000000048              recur
+0000000000601028 g     O .data  0000000000000004              stuff
+
+2.growing up, or in other words to smaller address
+
+3. 48 bytes
+
+4. 671070
+growing down, or to larger address
+
+5. No.
+
+6. 
+0x400544
+code (main, recur)
+0x601028
+static data (stuff)
+
+[hole]
+
+0x17cb010
+heap (buf1, buf2)
+|
+\/(grow)
+
+-------- [hole]
+
+/\(grow)
+|
+stack
+0x7fff4a72a4fc

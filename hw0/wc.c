@@ -34,10 +34,10 @@ void wc(FILE *ofile, FILE *infile, char *inname) {
 		count++;
 	}
 	if (inname == NULL) {
-		printf(" %d %d %d\n", line_count, word_count, char_count);
+		printf(" %*d %*d %*d\n", count, line_count, count, word_count, count, char_count);
 	}
 	else if (ofile == NULL) {
-		printf("%d %d %d %s\n", line_count, word_count, char_count, inname);
+		printf("%d %d %d %s\n", count, line_count, count, word_count, count, char_count, inname);
 	}
 	else {
 		fprintf(ofile, "%d %d %d %s\n", line_count, word_count, char_count, inname);
