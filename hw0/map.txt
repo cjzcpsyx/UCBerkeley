@@ -1,7 +1,7 @@
 1.
-000000000040058c g     F .text  00000000000000d5              main
-0000000000400544 g     F .text  0000000000000048              recur
-0000000000601028 g     O .data  0000000000000004              stuff
+00000000004005c2 g     F .text	00000000000000c3              main
+000000000040057d g     F .text	0000000000000045              recur
+0000000000601048 g     O .data	0000000000000004              stuff
 
 2.growing up, or in other words to smaller address
 
@@ -13,14 +13,14 @@ growing down, or to larger address
 5. No.
 
 6. 
-0x400544
+0x40057d
 code (main, recur)
-0x601028
+0x601048
 static data (stuff)
 
 [hole]
 
-0x17cb010
+0x09691a75
 heap (buf1, buf2)
 |
 \/(grow)
@@ -30,4 +30,4 @@ heap (buf1, buf2)
 /\(grow)
 |
 stack
-0x7fff4a72a4fc
+0x0000000000000e28

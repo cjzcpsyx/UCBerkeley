@@ -6,3 +6,6 @@ all:
 clean:
 	rm -rf main map wc
 check:
+	$(CC) wc.c -o wc
+	wc main.c
+	./wc main.c
