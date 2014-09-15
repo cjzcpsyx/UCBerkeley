@@ -132,7 +132,6 @@ int shell (int argc, char *argv[]) {
     while (commands != NULL) {
       commands = strtok(NULL, "&");
       pid_t cpid;
-      int cstatus;
       cpid = fork();
       if (cpid < 0 ) {
         perror("fork failure");
@@ -145,12 +144,9 @@ int shell (int argc, char *argv[]) {
         else {      /* Treat it as a file to exec */
           cmd_exec(&t[0]);
         }
-        return 1;
       }
       else {
-        wait(&cstatus);
         fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
-        return 1;
       }
     }
   }
