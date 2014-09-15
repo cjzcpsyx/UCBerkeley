@@ -24,6 +24,8 @@ int cmd_help(tok_t arg[]);
 
 int cmd_cd(tok_t arg[]);
 
+int cmd_wait(tok_t arg[]);
+
 /* Command Lookup table */
 typedef int cmd_fun_t (tok_t args[]); /* cmd functions take token arra and rtn int */
 typedef struct fun_desc {
@@ -35,7 +37,8 @@ typedef struct fun_desc {
 fun_desc_t cmd_table[] = {
   {cmd_help, "?", "show this help menu"},
   {cmd_quit, "quit", "quit the command shell"},
-  {cmd_cd, "cd", "change directory"}
+  {cmd_cd, "cd", "change directory"},
+  {cmd_wait, "wait", "wait until all backgrounded jobs have terminated"}
 };
 
 char * concat(char *s1, char *s2) {
@@ -64,6 +67,11 @@ int cmd_cd(tok_t arg[]) {
   }
   return result;
 }
+
+int cmd_wait(tok_t arg[]) {
+  return 1;
+}
+
 int cmd_exec(tok_t arg[]) {
   pid_t cpid;
   int cstatus;
@@ -144,11 +152,10 @@ int shell (int argc, char *argv[]) {
         else {      /* Treat it as a file to exec */
           cmd_exec(&t[0]);
         }
-      }
-      else {
-        fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
+        exit(1);
       }
     }
+    fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
   }
   return 0;
 }
