@@ -45,13 +45,6 @@ char * concat(char *s1, char *s2) {
   return new_str;
 }
 
-char * last(tok_t arg[]) {
-  int i;
-  for (i=0; arg[i] != '\0'; i++)
-  ;
-  return arg[--i];
-}
-
 int cmd_help(tok_t arg[]) {
   int i;
   for (i=0; i < (sizeof(cmd_table)/sizeof(fun_desc_t)); i++) {
@@ -135,38 +128,30 @@ int shell (int argc, char *argv[]) {
   lineNum=0;
   fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
   while ((s = freadln(stdin))) {
-    t = getToks(s);   /* Break the line into tokens */
-    fundex = lookup(t[0]);  /* Is first token a shell literal */
-    if (strcmp(last(t), "&") == 0) {
-      tok_t *new_tok = malloc(strlen(s)+1);
-      int i;
-      for (i=0; strcmp(t[i], "&") != 0; i++) {
-        new_tok[i] = t[i];
-      }
+    char * commands = strtok(s, "&");
+    while (commands != NULL) {
+      commands = strtok(NULL, "&");
       pid_t cpid;
       int cstatus;
       cpid = fork();
-      if(cpid < 0 ) {
+      if (cpid < 0 ) {
         perror("fork failure");
         exit(1);
       }
       if (cpid == 0) {
-        if (fundex >= 0) cmd_table[fundex].fun(&new_tok[1]);
+        t = getToks(s);   /* Break the line into tokens */
+        fundex = lookup(t[0]);  /* Is first token a shell literal */
+        if (fundex >= 0) cmd_table[fundex].fun(&t[1]);
         else {      /* Treat it as a file to exec */
-          cmd_exec(&new_tok[0]);
+          cmd_exec(&t[0]);
         }
+        return 1;
       }
       else {
-        waitpid(cpid, &cstatus, 0);
+        wait(&cstatus);
         fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
+        return 1;
       }
-    }
-    else {
-      if (fundex >= 0) cmd_table[fundex].fun(&t[1]);
-      else {      /* Treat it as a file to exec */
-        cmd_exec(&t[0]);
-      }
-      fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
     }
   }
   return 0;
