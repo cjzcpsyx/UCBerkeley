@@ -130,7 +130,7 @@ int shell (int argc, char *argv[]) {
   printf("%s running as PID %d under %d\n",argv[0],pid,ppid);  
 
   lineNum=0;
-  fprintf(stdout,"%s[%d]: ", cmd_pwd(), lineNum);
+  fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
   while ((s = freadln(stdin))) {
     t = getToks(s);   /* Break the line into tokens */
     fundex = lookup(t[0]);  /* Is first token a shell literal */
@@ -155,7 +155,7 @@ int shell (int argc, char *argv[]) {
       }
       else {
         waitpid(cpid, &cstatus, 0);
-        fprintf(stdout,"%s[%d]: ", cmd_pwd(), ++lineNum);
+        fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
       }
     }
     else {
@@ -163,7 +163,7 @@ int shell (int argc, char *argv[]) {
       else {      /* Treat it as a file to exec */
         cmd_exec(&t[0]);
       }
-      fprintf(stdout,"%s[%d]: ", cmd_pwd(), ++lineNum);
+      fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
     }
   }
   return 0;
