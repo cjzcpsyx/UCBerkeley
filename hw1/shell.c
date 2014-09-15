@@ -38,6 +38,13 @@ fun_desc_t cmd_table[] = {
   {cmd_cd, "cd", "change directory"}
 };
 
+char * concat(char *s1, char *s2) {
+  char *new_str = malloc(strlen(s1)+strlen(s2)+1);
+  strcpy(new_str, s1);
+  strcat(new_str, s2);
+  return new_str;
+}
+
 int cmd_help(tok_t arg[]) {
   int i;
   for (i=0; i < (sizeof(cmd_table)/sizeof(fun_desc_t)); i++) {
@@ -67,7 +74,14 @@ int cmd_exec(tok_t arg[]) {
   }
   if (cpid == 0) {
     int result;
-    result = execv(arg[0], arg);
+    char * env_path = strtok(getenv("PATH"), ":");
+    while (env_path != NULL) {
+      result = execv(concat(concat(env_path, "/"), arg[0]), arg);
+      env_path = strtok(NULL, ":");
+      if (result != -1) {
+        break;
+      }
+    }
     if (result == -1) {
       fprintf(stdout,"%s\n", "command not found");
     }
@@ -99,22 +113,22 @@ int lookup(char cmd[]) {
 }
 
 int shell (int argc, char *argv[]) {
-  char *s;			/* user input string */
-  tok_t *t;			/* tokens parsed from input */
+  char *s;      /* user input string */
+  tok_t *t;     /* tokens parsed from input */
   int lineNum = 0;
   int fundex = -1;
-  pid_t pid = getpid();		/* get current processes PID */
-  pid_t ppid = getppid();	/* get parents PID */
+  pid_t pid = getpid();   /* get current processes PID */
+  pid_t ppid = getppid(); /* get parents PID */
 
   printf("%s running as PID %d under %d\n",argv[0],pid,ppid);  
 
   lineNum=0;
   fprintf(stdout,"%s[%d]: ", cmd_pwd(), lineNum);
   while ((s = freadln(stdin))) {
-    t = getToks(s);		/* Break the line into tokens */
-    fundex = lookup(t[0]);	/* Is first token a shell literal */
+    t = getToks(s);   /* Break the line into tokens */
+    fundex = lookup(t[0]);  /* Is first token a shell literal */
     if (fundex >= 0) cmd_table[fundex].fun(&t[1]);
-    else {			/* Treat it as a file to exec */
+    else {      /* Treat it as a file to exec */
       cmd_exec(&t[0]);
     }
     fprintf(stdout,"%s[%d]: ", cmd_pwd(), ++lineNum);
