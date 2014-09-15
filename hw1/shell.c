@@ -90,7 +90,10 @@ int cmd_exec(tok_t arg[]) {
       }
     }
     if (result == -1) {
-      fprintf(stdout,"%s\n", "command not found");
+      result = execv(arg[0], arg);
+      if (result == -1) {
+        fprintf(stdout,"%s\n", "command not found");
+      }
     }
     exit(1);
     return result;
