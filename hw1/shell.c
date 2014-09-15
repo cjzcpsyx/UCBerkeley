@@ -5,6 +5,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 
 #define FALSE 0
 #define TRUE 1
@@ -54,7 +55,29 @@ int cmd_cd(tok_t arg[]) {
   else {
     path = arg[0];
   }
-  return 1;
+  return result;
+}
+int cmd_exec(tok_t arg[]) {
+  pid_t cpid;
+  int cstatus;
+  cpid = fork();
+  if(cpid < 0 ) {
+    perror("fork failure");
+    exit(1);
+  }
+  if (cpid == 0) {
+    int result;
+    result = execv(arg[0], arg);
+    if (result == -1) {
+      fprintf(stdout,"%s\n", "command not found");
+    }
+    exit(1);
+    return result;
+  }
+  else {
+    wait(&cstatus);
+    return 1;
+  }
 }
 
 char * cmd_pwd() {
@@ -92,7 +115,7 @@ int shell (int argc, char *argv[]) {
     fundex = lookup(t[0]);	/* Is first token a shell literal */
     if (fundex >= 0) cmd_table[fundex].fun(&t[1]);
     else {			/* Treat it as a file to exec */
-      fprintf(stdout,"This shell currently supports only built-ins.  Replace this to run programs as commands.\n");
+      cmd_exec(&t[0]);
     }
     fprintf(stdout,"%s[%d]: ", cmd_pwd(), ++lineNum);
   }
