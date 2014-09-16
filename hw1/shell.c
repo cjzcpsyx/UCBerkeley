@@ -13,6 +13,8 @@
 #include "parse.h"
 
 char *path = ".";
+int ps_count = 0;
+pid_t ps_array[20];
 
 int cmd_quit(tok_t arg[]) {
   printf("Bye\n");
@@ -76,6 +78,11 @@ int cmd_cd(tok_t arg[]) {
 }
 
 int cmd_wait(tok_t arg[]) {
+  int i;
+  int cstatus;
+  for (i=0; i<ps_count; i++) {
+    waitpid(ps_array[ps_count], &cstatus, 0);
+  }
   return 1;
 }
 
@@ -146,27 +153,26 @@ int shell (int argc, char *argv[]) {
     t = getToks(s);   /* Break the line into tokens */
     fundex = lookup(t[0]);  /* Is first token a shell literal */
     if (strcmp(last(t), "&") == 0) {
-      tok_t *new_tok = malloc(strlen(s)+1);
-      int i;
-      for (i=0; strcmp(t[i], "&") != 0; i++) {
-        new_tok[i] = t[i];
-      }
-      printf("%s\n", *new_tok);
-      pid_t cpid;
-      cpid = fork();
-      if(cpid < 0 ) {
-        perror("fork failure");
-        exit(1);
-      }
-      if (cpid == 0) {
-        if (fundex >= 0) cmd_table[fundex].fun(&new_tok[1]);
-        else {      /* Treat it as a file to exec */
-          cmd_exec(&new_tok[0]);
-        }
+      char * new_s = strtok(s, "&");
+      tok_t *new_tok = getToks(new_s);
+      if (ps_count == 20) {
+        printf("%s\n", "Maximum ps allowed is 20");
         exit(1);
       }
       else {
-        fprintf(stdout,"%s[%d]: ", cmd_pwd(), ++lineNum);
+        pid_t cpid;
+        cpid = fork();
+        ps_array[ps_count++] = cpid;
+        if(cpid < 0 ) {
+          perror("fork failure");
+          exit(1);
+        }
+        if (cpid == 0) {
+          if (fundex >= 0) cmd_table[fundex].fun(&new_tok[1]);
+          else {      /* Treat it as a file to exec */
+            cmd_exec(&new_tok[0]);
+          }
+        }
       }
     }
     else {
@@ -174,8 +180,8 @@ int shell (int argc, char *argv[]) {
       else {      /* Treat it as a file to exec */
         cmd_exec(&t[0]);
       }
-      fprintf(stdout,"%s[%d]: ", cmd_pwd(), ++lineNum);
     }
+    fprintf(stdout,"%s[%d]: ", cmd_pwd(), ++lineNum);
   }
   return 0;
 }
