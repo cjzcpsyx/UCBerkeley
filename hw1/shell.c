@@ -136,24 +136,11 @@ int shell (int argc, char *argv[]) {
   lineNum=0;
   fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
   while ((s = freadln(stdin))) {
-    char * commands = strtok(s, "&");
-    while (commands != NULL) {
-      commands = strtok(NULL, "&");
-      pid_t cpid;
-      cpid = fork();
-      if (cpid < 0 ) {
-        perror("fork failure");
-        exit(1);
-      }
-      if (cpid == 0) {
-        t = getToks(s);   /* Break the line into tokens */
-        fundex = lookup(t[0]);  /* Is first token a shell literal */
-        if (fundex >= 0) cmd_table[fundex].fun(&t[1]);
-        else {      /* Treat it as a file to exec */
-          cmd_exec(&t[0]);
-        }
-        exit(1);
-      }
+    t = getToks(s);   /* Break the line into tokens */
+    fundex = lookup(t[0]);  /* Is first token a shell literal */
+    if (fundex >= 0) cmd_table[fundex].fun(&t[1]);
+    else {      /* Treat it as a file to exec */
+      cmd_exec(&t[0]);
     }
     fprintf(stdout,"%d %s: ", ++lineNum, cmd_pwd());
   }
