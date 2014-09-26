@@ -70,24 +70,39 @@ int process_http_request(int httpsockfd)
   dir = strtok(NULL, " ");
   write(httpsockfd,htmlheader,strlen(htmlheader));
   if (strcmp(method, "GET") == 0) {
-    char resbuf[MAXBUF];
+    char resbuf[MAXBUF+1];
     FILE *fp = fopen(concat("www", dir), "r");
     if (fp != NULL) {
       size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
+      if (newLen == 0) {
+        fputs("Error reading file", stderr);
+      } else {
+        resbuf[++newLen] = '\0'; /* Just to be safe. */
+      }
       fclose(fp);
       write(httpsockfd, resbuf, newLen);
     }
     else {
       FILE *fp = fopen("404.html", "r");
       size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
+      if (newLen == 0) {
+        fputs("Error reading file", stderr);
+      } else {
+        resbuf[++newLen] = '\0'; /* Just to be safe. */
+      }
       fclose(fp);
       write(httpsockfd, resbuf, newLen);
     }
   }
   else {
-    char resbuf[MAXBUF];
+    char resbuf[MAXBUF+1];
     FILE *fp = fopen("400.html", "r");
     size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
+    if (newLen == 0) {
+      fputs("Error reading file", stderr);
+    } else {
+      resbuf[++newLen] = '\0'; /* Just to be safe. */
+    }
     fclose(fp);
     write(httpsockfd, resbuf, newLen);
   }
