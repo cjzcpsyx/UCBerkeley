@@ -90,7 +90,7 @@ int process_http_request(int httpsockfd)
       FILE *fp = fopen("400.html", "r");
       size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
       fclose(fp);
-      write(httpsockfd,badreaquestheader,strlen(htmlheader));
+      write(httpsockfd,badreaquestheader,strlen(badreaquestheader));
       write(httpsockfd, resbuf, newLen);
     }
   }
@@ -98,7 +98,7 @@ int process_http_request(int httpsockfd)
     FILE *fp = fopen("404.html", "r");
     size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
     fclose(fp);
-    write(httpsockfd,notfoundheader,strlen(htmlheader));
+    write(httpsockfd,notfoundheader,strlen(notfoundheader));
     write(httpsockfd, resbuf, newLen);
   }
   return 0;
