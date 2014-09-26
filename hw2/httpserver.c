@@ -29,7 +29,7 @@ const char notfoundheader[]="HTTP/1.0 404 Not Found\r\n"
   "Content-Type: text/html\r\n"
   "\r\n";
 
-const char badreaquestheader[]="HTTP/1.0 200 OK\r\n"
+const char badreaquestheader[]="HTTP/1.0 400 Bad Request\r\n"
   "Content-Type: text/html\r\n"
   "\r\n";
 
