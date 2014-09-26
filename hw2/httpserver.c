@@ -76,29 +76,29 @@ int process_http_request(int httpsockfd)
   method = strtok(reqbuf," ");
   char * dir;
   dir = strtok(NULL, " ");
-  if (strcmp(method, "GET") == 0) {
-    char resbuf[MAXBUF];
-    FILE *fp = fopen(concat("www", dir), "r");
-    if (fp != NULL) {
-      size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
-      fclose(fp);
+  char resbuf[MAXBUF];
+  FILE *fp = fopen(concat("www", dir), "r");
+  if (fp != NULL) {
+    size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
+    fclose(fp);
+    if (strcmp(method, "GET") == 0) {
       write(httpsockfd,htmlheader,strlen(htmlheader));
       write(httpsockfd, resbuf, newLen);
+    
     }
     else {
-      FILE *fp = fopen("404.html", "r");
+      FILE *fp = fopen("400.html", "r");
       size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
       fclose(fp);
-      write(httpsockfd,notfoundheader,strlen(htmlheader));
+      write(httpsockfd,badreaquestheader,strlen(htmlheader));
       write(httpsockfd, resbuf, newLen);
     }
   }
   else {
-    char resbuf[MAXBUF];
-    FILE *fp = fopen("400.html", "r");
+    FILE *fp = fopen("404.html", "r");
     size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
     fclose(fp);
-    write(httpsockfd,badreaquestheader,strlen(htmlheader));
+    write(httpsockfd,notfoundheader,strlen(htmlheader));
     write(httpsockfd, resbuf, newLen);
   }
   return 0;
