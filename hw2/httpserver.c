@@ -25,9 +25,24 @@ const char htmlheader[]="HTTP/1.0 200 OK\r\n"
   "Content-Type: text/html\r\n"
   "\r\n";
 
+const char notfoundheader[]="HTTP/1.0 404 Not Found\r\n"
+  "Content-Type: text/html\r\n"
+  "\r\n";
+
+const char badreaquestheader[]="HTTP/1.0 400 Bad Request\r\n"
+  "Content-Type: text/html\r\n"
+  "\r\n";
+
 const char textheader[]="HTTP/1.0 200 OK\r\n"
   "Content-Type: text/plain\r\n"
   "\r\n";
+
+char * concat(char *s1, char *s2) {
+  char *new_str = malloc(strlen(s1)+strlen(s2)+1);
+  strcpy(new_str, s1);
+  strcat(new_str, s2);
+  return new_str;
+}
 
 int process_http_request(int httpsockfd)
 {
@@ -55,10 +70,37 @@ int process_http_request(int httpsockfd)
  */
   memset(reqbuf,0, MAXREQ);
   n = read(httpsockfd,reqbuf,MAXREQ-1);
-  write(httpsockfd,textheader,strlen(textheader));
-  write(httpsockfd,"You said:\n",10);
   write(STDOUT_FILENO, reqbuf, n );
-  write(httpsockfd, reqbuf, n );
+
+  char * method;
+  method = strtok(reqbuf," ");
+  char * dir;
+  dir = strtok(NULL, " ");
+  char resbuf[MAXBUF];
+  FILE *fp = fopen(concat("www", dir), "r");
+  if (fp != NULL) {
+    size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
+    fclose(fp);
+    if (strcmp(method, "GET") == 0) {
+      write(httpsockfd,htmlheader,strlen(htmlheader));
+      write(httpsockfd, resbuf, newLen);
+    
+    }
+    else {
+      FILE *fp = fopen("400.html", "r");
+      size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
+      fclose(fp);
+      write(httpsockfd,badreaquestheader,strlen(badreaquestheader));
+      write(httpsockfd, resbuf, newLen);
+    }
+  }
+  else {
+    FILE *fp = fopen("404.html", "r");
+    size_t newLen = fread(resbuf, sizeof(char), MAXBUF, fp);
+    fclose(fp);
+    write(httpsockfd,notfoundheader,strlen(notfoundheader));
+    write(httpsockfd, resbuf, newLen);
+  }
   return 0;
 }
 
