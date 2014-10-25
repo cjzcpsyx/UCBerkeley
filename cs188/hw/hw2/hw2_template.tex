@@ -1,0 +1,329 @@
+%%% Please replace what is within each curly bracket with the correct information below. %%%
+%%% The first field is already filled in for you.  %%%
+\def\ClassName {CS188} % Your course 
+\def\NameLast {Chen}  % Your last name
+\def\NameFirst {Jianzhong}  % Your first name
+\def\SID{23478230}  % Your SID
+\def\Email{chenjianzhong@berkeley.edu} % Your pandagrader email
+\def\Collaborators{None} % Any collaborators
+
+
+%%%%% FILL IN YOUR ANSWERS TO EACH QUESTION SEE INSTRUCTIONS FOR EACH QUESTION.
+
+\def\AnswerOneAi{
+%%% Begin 1a(i) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% To cross out a value, use \cross. 
+% For example, to cross out values 2,3, and 5 for variable V, do the following:
+%                      V & 1 & \cross{2} & \cross{3} & 4 & \cross{5} & 6\\
+P & \cross{1} & \cross{2} & \cross{3} & 4 & 5 & 6\\
+B & \cross{1} & 2 & \cross{3} & 4 & \cross{5} & 6\\
+C & 1 & 2 & 3 & 4 & 5 & 6\\
+K & 1 & 2 & 3 & 4 & 5 & 6\\
+I & \cross{1} & 2 & 3 & 4 & 5 & \cross{6}\\
+M & \cross{1} & \cross{2} & \cross{3} & \cross{4} & 5 & 6\\
+
+
+%%% End 1a(i) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+\def\AnswerOneAii{
+%%% Begin 1a(ii) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% For every bubble you want to fill, replace \mcqb with \mcqbubblefill.
+%%% for example:              \mcqbubblefill {Answer} \hfill
+\mcqb {P} \hfill 
+\mcqb {B} \hfill 
+\mcqb {C} \hfill 
+\mcqb {K} \hfill
+\mcqb {I} \hfill
+\mcqbubblefill {M} \\
+
+%%% End 1a(ii) answer  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+\def\AnswerOneAiii{
+%%% Begin 1a(iii) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% To cross out a value, use \cross. 
+% For example, to cross out values 2,3, and 5 for variable V, do the following:
+%                  V & 1 & \cross{2} & \cross{3} & 4 & \cross{5} & 6\\
+P &   &   &   &  &   &  6\\
+B & \cross{1} & \cross{2} & \cross{3} & 4 & \cross{5} & \cross{6}\\
+C & 1 & 2 & 3 & 4 & 5 & \cross{6}\\
+K & 1 & 2 & 3 & 4 & 5 & \cross{6}\\
+I & \cross{1} & 2 & 3 & 4 & 5 & \cross{6}\\
+M & \cross{1} & \cross{2} & \cross{3} & \cross{4} & 5 & \cross{6}\\
+
+%%% End 1a(iii) answer  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+\def\AnswerOneAiv{
+%%% Begin 1a(iv) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Variable & \# violated\\
+\hline
+P& \solution{}{0}\\ %%% Replace ? with an integer within the brackets
+\hline
+B&\solution{}{0}\\ %%% Replace ? with an integer within the brackets
+\hline
+C&\solution{}{1}\\ %%% Replace ? with an integer within the brackets
+\hline
+K&\solution{}{0}\\ %%% Replace ? with an integer within the brackets
+\hline
+I&\solution{}{2}\\ %%% Replace ? with an integer within the brackets
+\hline
+M&\solution{}{0}\\ %%% Replace ? with an integer within the brackets
+\hline
+\end{tabular} \hspace{2cm}&
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+&1&2&3&4&5&6\\
+\hline
+% Example:
+% V & x & x & x & x & x & x &  
+
+P& & & & & &\\ %% put an "x" between the &'s to mark a cell.
+\hline
+B& & & & & &\\ %% put an "x" between the &'s to mark a cell.
+\hline
+C& & x & & & &\\ %% put an "x" between the &'s to mark a cell.
+\hline
+K& & & & & &\\ %% put an "x" between the &'s to mark a cell.
+\hline
+I& & x & x & & &\\ %% put an "x" between the &'s to mark a cell.
+\hline
+M& & & & & &\\ %% put an "x" between the &'s to mark a cell.
+\hline
+%%% End 1a(iv) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+%%% Answers to 2a here. Put an x inside the curly brackets to mark, otherwise, leave blank.
+\def\AnswerOneBi{
+
+%%% Begin 1b(i) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Algorithm 1 & Algorithm 2 & Algorithm 3\\
+\hline
+&&\\
+% For example, to select the first column on a row:
+% \sol{Answer 1} & {Answer 2} & {Answer 3}\\
+{A-B-C-D-E-F} & {A-B-C-D-E-F} & \sol{A-B-C-D-E-F}\\ %% Put \sol in front of ordering to circle it.
+&&\\
+{F-E-D-C-B-A} & {F-E-D-C-B-A} & \sol{F-E-D-C-B-A}\\ %% Put \sol in front of ordering to circle it.
+&&\\
+{C-A-B-D-E-F} & \sol{C-A-B-D-E-F} & \sol{C-A-B-D-E-F}\\ %% Put \sol in front of ordering to circle it.
+&&\\
+{B-D-A-F-E-C} & {B-D-A-F-E-C} & \sol{B-D-A-F-E-C}\\ %% Put \sol in front of ordering to circle it.
+&&\\
+{D-E-F-C-B-A} & {D-E-F-C-B-A} & \sol{D-E-F-C-B-A}\\ %% Put \sol in front of ordering to circle it.
+&&\\
+{B-C-D-A-E-F} & \sol{B-C-D-A-E-F} & \sol{B-C-D-A-E-F}\\ %% Put \sol in front of ordering to circle it.
+
+%%% End 1b(i) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+\def\AnswerOneBii{
+
+%%% Begin 1b(ii) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Algorithm 1 & Algorithm 2 & Algorithm 3\\
+\hline
+&&\\
+
+% For example, to select the first column on a row:
+% \sol{Answer 1} & {Answer 2} & {Answer 3}\\
+{C-F-A-B-E-D-G-H} & {C-F-A-B-E-D-G-H} & \sol{C-F-A-B-E-D-G-H} \\ %% Put \sol in front of ordering to circle it.
+&&\\
+{F-C-A-H-E-B-D-G} & {F-C-A-H-E-B-D-G} & \sol{F-C-A-H-E-B-D-G} \\ %% Put \sol in front of ordering to circle it.
+&&\\
+{A-B-C-E-D-F-G-H} & {A-B-C-E-D-F-G-H} & {A-B-C-E-D-F-G-H} \\ %% Put \sol in front of ordering to circle it.
+&&\\
+{G-C-H-F-B-D-E-A} & {G-C-H-F-B-D-E-A} & \sol{G-C-H-F-B-D-E-A} \\ %% Put \sol in front of ordering to circle it.
+&&\\
+{A-B-E-D-G-H-C-F} & {A-B-E-D-G-H-C-F} & {A-B-E-D-G-H-C-F} \\ %% Put \sol in front of ordering to circle it.
+&&\\
+{A-D-B-G-E-H-C-F} & {A-D-B-G-E-H-C-F} & {A-D-B-G-E-H-C-F} \\ %% Put \sol in front of ordering to circle it.
+
+%%% End 1b(ii) answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\def\AnswerOneCi {
+%%% Begin Answer 1c(i) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Replace \mcqb with \mcqbubblefill to select your answer(s).
+& \mcqbubblefill Neither MRV nor LCV can have an effect.\\\\
+& \mcqb Only MRV can have an effect.\\\\
+& \mcqb Only LCV can have an effect .\\\\
+& \mcqb Both MRV and LCV can have an effect.\\\\
+
+%%% End Answer 1c(i) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\def\AnswerOneCii {
+%%% Begin Answer 1c(i) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% %%% Begin Answer 1c(ii) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Replace \mcqb with \mcqbubblefill to select your answer(s).
+& \mcqb Neither MRV nor LCV can have an effect.\\\\
+& \mcqbubblefill Only MRV can have an effect.\\\\
+& \mcqb Only LCV can have an effect .\\\\
+& \mcqb Both MRV and LCV can have an effect.\\\\
+%%% End Answer 1c(ii) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\def\AnswerOneCiii {
+%%% Begin Answer 1c(iii) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Replace \mcqb with \mcqbubblefill to select your answer(s).
+& \mcqb Neither MRV nor LCV can have an effect.\\\\
+& \mcqbubblefill Only MRV can have an effect.\\\\
+& \mcqb Only LCV can have an effect .\\\\
+& \mcqb Both MRV and LCV can have an effect.\\\\
+%%% End Answer 1c(iii) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\def\AnswerOneCiv {
+%%% End Answer 1c(iv) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Replace \mcqb with \mcqbubblefill to select your answer(s).
+& \mcqb Neither MRV nor LCV can have an effect.\\\\
+& \mcqbubblefill Only MRV can have an effect.\\\\
+& \mcqb Only LCV can have an effect .\\\\
+& \mcqb Both MRV and LCV can have an effect.\\\\
+%%% End Answer 1c(iv) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\def\AnswerOneCv {
+%%% End Answer 1c(v) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Replace \mcqb with \mcqbubblefill to select your answer(s).
+& \mcqb Neither MRV nor LCV can have an effect.\\\\
+& \mcqbubblefill Only MRV can have an effect.\\\\
+& \mcqb Only LCV can have an effect .\\\\
+& \mcqb Both MRV and LCV can have an effect.\\\\
+%%% End Answer 1c(v) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+%%%%%%%%%%%%%%%%%%%%%% DO NOT CHANGE ANYTHING BELOW THIS LINE %%%%%%%%%%%%%%%%%%%%%%%%%
+\def \showSolutions {} 
+
+\documentclass[twoside]{article}
+\usepackage{class}
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{wrapfig}
+\usepackage{color}
+\usepackage{pifont}
+\usepackage{mdwlist}
+\usepackage[lofdepth,lotdepth]{subfig}
+\usepackage{mdwlist}
+\usepackage{wasysym}
+
+\usepackage{ulem}
+\title{Written HW2}
+
+\usepackage{multirow}
+
+\pagestyle{myheadings}
+
+% Bubbles for multiple choice questions
+\newcommand{\mcqbubble}{\bigcirc}
+\newcommand{\mcqbubblefill}{\solution{\mcqb}{$\Large\newmoon$\ \ }}
+
+% shorthand
+\newcommand{\mcqb}{$\bigcirc$\ \ }
+\newcommand{\mcqs}{\solution{\mcqb}{$\Large\newmoon$\ \ }}
+\newcommand{\cross}[1]{{\color{blue}\sout{#1}}}
+\newcommand{\sol}[1]{\solutioncircle{#1}}
+
+
+
+
+\renewcommand{\P}{\mathbf{P}}
+\newcommand{\eat}[1]{\ignorespaces}
+\newcommand{\X}{\ding{110}}
+\newcommand{\F}{$\bullet$}
+\newcommand{\Pac}{$<$}
+\def\truefalse{\vspace{0.3in} \item (\emph{true} or \emph{false}) }
+\def\indep{\perp\!\!\!\perp}
+\def\sgn{\mathop{\mathrm{sign}}}
+
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+
+\smallskip
+\smallskip
+\textbf{INSTRUCTIONS}
+
+\begin{itemize}
+\item \textbf{Due:} Monday, February 10th, 2014 11:59 PM
+\item \textbf{Policy:} Can be solved in groups (acknowledge collaborators) but must
+be written up individually. However,
+we strongly encourage you to first work alone for about 30 minutes total in order to simulate an exam environment.  Late homework
+will not be accepted.
+\item \textbf{Format:}  Submit the answer sheet pdf containing your answers. Page 1
+must be this page, with your name,
+SID, and pandagrader email filled in. Page 2 must contain your answers
+to question 1 part a. Page 3 must contain your answers to question 1 part b. Page 4 must contain your answers to question 1 part c.
+You should solve the questions on this handout (either through a pdf annotator, or by printing, then scanning; we recommend the latter to match exam setting). Alternatively, you can typeset a pdf on your own that has answers appearing in the same space (check edx/piazza for latex templating files and instructions).
+\textbf{Make sure that your answers (typed or handwritten) are within the
+dedicated regions for each question/part.  If you do not follow this format, we may deduct points.}
+
+\item \textbf{How to submit:}  Go to www.pandagrader.com. Log in and click on the
+class CS188 Spring 2014. Click
+on the submission titled Written HW 2 and upload your pdf containing your answers. If this is your first time using
+pandagrader, you will have to set your password before logging in the
+first time.  To do so, click on "Forgot your password" on the login
+page, and enter your email address on file with the registrar's office
+(usually your @berkeley.edu email address). You will then receive an
+email with a link to reset your password.
+
+\end{itemize}
+
+
+\begin{center}
+\begin{tabular}{|r|c|}
+\hline
+\begin{minipage}{3cm}~\\Last Name~\\~\\\end{minipage} & \begin{minipage}[c][1cm][c]{8cm} ~ \NameLast \end{minipage}  \\
+\hline
+\begin{minipage}{3cm}~\\First Name~\\~\\\end{minipage} & \NameFirst \\
+\hline
+\begin{minipage}{3cm}~\\SID~\\~\\\end{minipage} & \SID \\
+\hline
+\begin{minipage}{3cm}~\\Email~\\~\\\end{minipage} & \Email \\
+\hline
+\begin{minipage}{3cm}~\\Collaborators~\\~\\\end{minipage} & \Collaborators \\
+\hline
+
+\end{tabular}
+\end{center}
+
+
+
+\vfill
+
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+
+\begin{center}
+{\bf For staff use only}\\
+\begin{Large}
+\begin{tabular}{|r|r|}
+\hline
+Q. 1 Total\\
+\hline
+
+\qquad/30 \\
+\hline
+\end{tabular}\end{Large}
+\end{center}
+
+\begin{enumerate}
+
+\input{q1}
+\newpage
+\end{enumerate}
+
+\end{document}

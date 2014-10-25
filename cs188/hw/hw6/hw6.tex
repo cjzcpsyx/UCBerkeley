@@ -1,0 +1,192 @@
+%%% Please replace what is within each curly bracket with the correct information below. %%%
+%%% The first field is already filled in for you.  %%%
+\def\ClassName {CS188} % Your course 
+\def\NameLast {Chen}  % Your last name
+\def\NameFirst {Jianzhong}  % Your first name
+\def\SID{23478230}  % Your SID
+\def\Email{chenjianzhong@berkeley.edu} % Your pandagrader email
+\def\Collaborators{None} % Any collaborators
+
+
+
+%%% For 1 a,b,c,d, replace mcqb with mcqs to bubble in the correct solution.
+\def\OneA{
+    \item[] \mcqb $\frac{P(C \mid A)\ P(A \mid B)\ P(B)}{P(C)}$
+    \item[] \mcqb $\frac{P(A \mid C)\ P(C \mid B)\ P(B)}{P(B, C)}$
+    \item[] \mcqb $\frac{P(C \mid A, B)\ P(B \mid A)\ P(A)}{P(B \mid C)\ P(C)}$
+    \item[] \mcqb $\frac{P(B, C \mid A)\ P(A)}{P(B, C)}$
+    \item[] \mcqb $\frac{P(A \mid C)\ P(B, C)}{P(C)}$
+    \item[] \mcqs $P(A \mid B, C)\ P(B \mid C)$
+    \item[] \mcqb None of the above.
+}
+\def\OneB{
+    \item[] \mcqb $\frac{P(C \mid A)\ P(A \mid B)\ P(B)}{P(C)}$
+    \item[] \mcqb $\frac{P(A \mid C)\ P(C \mid B)\ P(B)}{P(B, C)}$
+    \item[] \mcqb $\frac{P(C \mid A, B)\ P(B \mid A)\ P(A)}{P(B \mid C)\ P(C)}$
+    \item[] \mcqb $\frac{P(B, C \mid A)\ P(A)}{P(B, C)}$
+    \item[] \mcqs $\frac{P(A \mid C)\ P(B, C)}{P(C)}$
+    \item[] \mcqs $P(A \mid B, C)\ P(B \mid C)$
+    \item[] \mcqb None of the above.
+}
+\def\OneC{
+    \item[] \mcqb $\frac{P(C \mid A)\ P(A \mid B)\ P(B)}{P(C)}$
+    \item[] \mcqb $\frac{P(A \mid C)\ P(C \mid B)\ P(B)}{P(B, C)}$
+    \item[] \mcqs $\frac{P(C \mid A, B)\ P(B \mid A)\ P(A)}{P(B \mid C)\ P(C)}$
+    \item[] \mcqs $\frac{P(B, C \mid A)\ P(A)}{P(B, C)}$
+    \item[] \mcqb $\frac{P(A \mid C)\ P(B, C)}{P(C)}$
+    \item[] \mcqb $P(A \mid B, C)\ P(B \mid C)$
+    \item[] \mcqb None of the above.
+}
+\def\OneD{
+    \item[] \mcqb $\frac{P(C \mid A)\ P(A \mid B)\ P(B)}{P(C)}$
+    \item[] \mcqs $\frac{P(A \mid C)\ P(C \mid B)\ P(B)}{P(B, C)}$
+    \item[] \mcqs $\frac{P(C \mid A, B)\ P(B \mid A)\ P(A)}{P(B \mid C)\ P(C)}$
+    \item[] \mcqs $\frac{P(B, C \mid A)\ P(A)}{P(B, C)}$
+    \item[] \mcqb $\frac{P(A \mid C)\ P(B, C)}{P(C)}$
+    \item[] \mcqb $P(A \mid B, C)\ P(B \mid C)$
+    \item[] \mcqb None of the above.
+}
+
+%%%% Put answers within the brackets. If you want nice mathy looking equations, enclose math expressions between $ $. I.e. $ sin(10) \lte f(A) $ %%
+\def\TwoA{
+$\sum_{x_{t-1}}{P(X_t|x_{t-1})P(x_{t-1}|e_1,...,e_{t-1},z_1,...,z_{t-1})}$
+}
+
+\def\TwoB{
+$\dfrac{P(e_t|z_t,X_t)P(X_t|e_1,...,e_{t-1},z_1,...,z_{t-1})}{\sum_{x_t}{P(e_t|x_t,z_t)P(x_t|e_1,...,e_{t-1},z_1,...,z_{t-1})}}$
+}
+
+\def\TwoC{
+$\sum_{x_{t-1}}{P(X_t|x_{t-1})P(x_{t-1}|e_1,...,e_{t-1})}$
+}
+
+\def\TwoD{
+$\dfrac{\sum_{x_t}P(z_t)P(e_t|z_t,X_t)P(X_t|e_1,...,e_{t-1})}{\sum_{x_t}{P(x_t|e_1,...,e_{t-1})\sum_{x_t}{P(z_t)P(e_t|z_t,x_t)}}}$
+}
+
+\def\TwoE{
+$\sum_{x_{t-1}}{P(X_t|x_{t-1})P(x_{t-1}|e_1,...,e_{t-1})}$
+}
+
+\def\TwoF{
+$\dfrac{P(e_t|X_t)P(X_t|e_1,...,e_{t-1})}{\sum_{x_t}{P(e_t|x_t)P(x_t|e_1,...,e_{t-1})}}$
+}
+%%%%%%%%%%%%%%%%%%%%%% DO NOT CHANGE ANYTHING BELOW THIS LINE %%%%%%%%%%%%%%%%%%%%%%%%%
+\def \showSolutions {} 
+\documentclass[twoside]{article}
+
+\usepackage{class}
+%\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{amsmath,mathrsfs}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{mathcomp}
+\usepackage{tabularx}
+\usepackage{wasysym}
+\usepackage{pbox}
+\usetikzlibrary{bayesnet}
+
+% Bubbles for multiple choice questions
+\newcommand{\mcqbubble}{\bigcirc}
+\newcommand{\mcqbubblefill}{\Large\newmoon}
+
+% shorthand
+\newcommand{\mcqb}{$\bigcirc$\ \ }
+\newcommand{\mcqs}{\solution{\mcqb}{$\Large\newmoon$\ \ }}
+
+% pruning
+\newcommand{\prune}{\includegraphics[width=0.2in]{figures/red_x}}
+% title is Written HW5
+\title{Written HW6}
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+
+\smallskip
+\smallskip
+\textbf{INSTRUCTIONS}
+
+\begin{itemize}
+\item \textbf{Due:} Monday, March 17th 2014 11:59 PM
+\item \textbf{Policy:} Can be solved in groups (acknowledge collaborators) but must
+be written up individually. However,
+we strongly encourage you to first work alone for about 30 minutes total in order to simulate an exam environment.  Late homework
+will not be accepted.
+\item \textbf{Format:}
+You must solve the questions on this handout (either through a pdf annotator, or by printing, then scanning; we recommend the latter to match exam setting). Alternatively, you can typeset a pdf on your own that has answers appearing in the same space (check edx/piazza for latex templating files and instructions).
+\textbf{Make sure that your answers (typed or handwritten) are within the
+dedicated regions for each question/part.  If you do not follow this format, we may deduct points.}
+
+\item \textbf{How to submit:}  Go to www.pandagrader.com. Log in and click on the
+class CS188 Spring 2014. Click
+on the submission titled Written HW 6 and upload your pdf containing your answers. If this is your first time using
+pandagrader, you will have to set your password before logging in the
+first time.  To do so, click on "Forgot your password" on the login
+page, and enter your email address on file with the registrar's office
+(usually your @berkeley.edu email address). You will then receive an
+email with a link to reset your password.
+
+\end{itemize}
+
+
+\begin{center}
+\begin{tabular}{|r|c|}
+\hline
+\begin{minipage}{3cm}~\\Last Name~\\~\\\end{minipage} & \begin{minipage}[c][1cm][c]{8cm} ~ \NameLast \end{minipage}  \\
+\hline
+\begin{minipage}{3cm}~\\First Name~\\~\\\end{minipage} & \NameFirst \\
+\hline
+\begin{minipage}{3cm}~\\SID~\\~\\\end{minipage} & \SID \\
+\hline
+\begin{minipage}{3cm}~\\Email~\\~\\\end{minipage} & \Email \\
+\hline
+\begin{minipage}{3cm}~\\Collaborators~\\~\\\end{minipage} & \Collaborators \\
+\hline
+
+\end{tabular}
+\end{center}
+
+
+
+\vfill
+
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+
+\begin{center}
+{\bf For staff use only}\\
+\begin{Large}
+\begin{tabular}{|r|r|r|}
+\hline
+Q. 1 & Q. 2 & Total\\
+\hline
+
+\quad/12 &\quad/18 &\qquad/30 \\
+\hline
+\end{tabular}\end{Large}
+\end{center}
+
+
+\newpage
+\input{chain_rule_madness}
+\newpage
+\input{hmm_sp13}
+\newpage
+
+
+\end{document}

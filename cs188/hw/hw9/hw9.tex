@@ -1,0 +1,227 @@
+%%% Please replace what is within each curly bracket with the correct information below. %%%
+%%% The first field is already filled in for you.  %%%
+\def\ClassName {CS188} % Your course 
+\def\NameLast {Chen}  % Your last name
+\def\NameFirst {Jianzhong}  % Your first name
+\def\SID{23478230}  % Your SID
+\def\Email{chenjianzhong@berkeley.edu} % Your pandagrader email
+\def\Collaborators{None} % Any collaborators
+
+\def\OneA{
+
+\item \mcqb $A$ \item \mcqb $B$ \item \mcqs $C$ \item \mcqb $D$ \item \mcqb $E$ \item \mcqb $F$
+
+}
+
+\def\OneB{
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+
+\item \mcqb $-\infty$ \item \mcqb $1/2$ \item \mcqb $-2$ \item \mcqb $1$ \item \mcqb $-1$
+\item \mcqb $2$ \item \mcqb $-1/2$ \item \mcqb $\infty$ \item \mcqs $0$
+\end{itemize}
+\end{multicols}
+
+\begin{multicols}{2}
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+\item \mcqb $Can$ be determined but is not equal to any of the provided options
+\item \mcqb $Cannot$ be determined from the information provided
+\end{itemize}
+}
+
+\def\OneC{
+
+\item \mcqs LL-Train would remain the same.
+\item \mcqb LL-Train would go up.
+\item \mcqb LL-Train would go down.
+\item \mcqs LL-Test would remain the same.
+\item \mcqb LL-Test would go up.
+\item \mcqb LL-Test would go down.
+}
+\def\OneCExplanation{
+Since LL-Train and LL-Test are under the limit of infinite data, and Laplace smoothing will only add only a small amount of samples, which is too few to change the value of LL-Train and LL-Test.
+}
+
+\def\OneD{
+
+\begin{tabular}{llll}
+Small amount of training data: &
+\mcqb $A \qquad$ & \mcqs $B \qquad$ & \mcqb $C \qquad$ \\  \\ \\
+Medium amount of training data: &
+\mcqs $A$ & \mcqb $B$ & \mcqb$C$ \\ \\ \\
+Large amount of training data: &
+\mcqb $A$ & \mcqb $B$ & \mcqs$C$ \\ \\ \\
+\end{tabular}
+}
+
+\def\OneDExplanation{
+With fewer data, a simple Bayes' net can generalize pretty well, but a complex Bayes' net will overfit. However, for a large amount of data, a simple Bayes' net will underfit, but a complex Bayes' net can simulate the actually distribution.
+}
+
+\def\TwoA{
+$p(A=+m|B=
++m,C=+m)=\frac{p(A=+m,B=
++m,C=+m)}{\sum_a{p(A=a,B=+m,C=+m)}}=\frac{p(A=+m)p(X=+m|\pi(X)=+m)p(X=+m|\pi(X)=+m)}{\sum_a{p(A=a)p(X=+m|\pi(X)=a)p(X=+m|\pi(X)=a)}}=\frac{0.5*0.9*0.9}{0.5*0.9*0.9+0.5*0.1*0.1}=\frac{81}{82}$
+}
+
+\def\TwoB{
+$p(D=+m|A=+m)=\frac{0.9^2+0.1^2}{0.9^2*0.1^2+2*0.9*0.1}=\frac{41}{50}$
+}
+
+\def\TwoC{
+$EU=p(D=+m|A=+m)*(-1)+(1-p(D=+m|A=+m))*1=-0.64$
+}
+
+\def\TwoD{
+$VPI=1-0.64=0.36$
+}
+
+\def\TwoE{
+Since D is independent from F given A, so the VPI of F given D=+m is 0.
+}
+
+\def\TwoF{
+\begin{center}
+\begin{tabular}{lllll}
+\mcqs $A \phantom{----}$  & \mcqs $B \phantom{----}$  & \mcqb $C \phantom{----}$  & \mcqb $E \phantom{----}$   \\ [1em]
+\mcqb $F \phantom{----}$  & \mcqb $G \phantom{----}$  & \mcqb $H \phantom{----}$  & \mcqb $I \phantom{----}$  & \mcqb $J \phantom{----}$   \\ [1em]
+\mcqb $K \phantom{----}$  & \mcqb $L \phantom{----}$  & \mcqb $M \phantom{----}$  & \mcqb $N \phantom{----}$  & \mcqb $O \phantom{----}$   \\ [1em]
+\end{tabular}
+\end{center}
+}
+\def\TwoFExplanation{
+Because D is dependent on B, and B is dependent on A.
+}
+
+\def\TwoG{
+\begin{center}
+\begin{tabular}{lllll}
+\mcqs $A \phantom{----}$  & \mcqs $B \phantom{----}$  & \mcqb $C \phantom{----}$  & \mcqb $E \phantom{----}$   \\ [1em]
+\mcqb $F \phantom{----}$  & \mcqb $G \phantom{----}$  & \mcqb $H \phantom{----}$  & \mcqb $I \phantom{----}$  & \mcqb $J \phantom{----}$   \\ [1em]
+\mcqb $K \phantom{----}$  & \mcqb $L \phantom{----}$  & \mcqb $M \phantom{----}$  & \mcqb $N \phantom{----}$  & \mcqb $O \phantom{----}$   \\ [1em]
+\end{tabular}
+\end{center}
+}
+
+\def\TwoGExplanation{
+Same reason as F
+}
+%%%%%%%%%%%%%%%%%%%%%% DO NOT CHANGE ANYTHING BELOW THIS LINE %%%%%%%%%%%%%%%%%%%%%%%%%
+\def \showSolutions {} 
+\documentclass[twoside]{article}
+
+\usepackage{class}
+%\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{amsmath,mathrsfs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{mathcomp}
+\usepackage{tabularx}
+\usepackage{wasysym}
+\usepackage{pbox}
+\usetikzlibrary{bayesnet}
+
+% Bubbles for multiple choice questions
+\newcommand{\mcqbubble}{\bigcirc}
+\newcommand{\mcqbubblefill}{\Large\newmoon}
+
+% shorthand
+\newcommand{\mcqb}{$\bigcirc$\ \ }
+\newcommand{\mcqs}{\solution{\mcqb}{$\Large\newmoon$\ \ }}
+
+% pruning
+\newcommand{\prune}{\includegraphics[width=0.2in]{figures/red_x}}
+% title is Written HW9
+\title{Written HW9}
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+
+\smallskip
+\smallskip
+\textbf{INSTRUCTIONS}
+
+\begin{itemize}
+\item \textbf{Due:} Monday, April 14th 2014 11:59 PM
+\item \textbf{Policy:} Can be solved in groups (acknowledge collaborators) but must
+be written up individually. However,
+we strongly encourage you to first work alone for about 30 minutes total in order to simulate an exam environment.  Late homework
+will not be accepted.
+\item \textbf{Format:}
+You must solve the questions on this handout (either through a pdf annotator, or by printing, then scanning; we recommend the latter to match exam setting). Alternatively, you can typeset a pdf on your own that has answers appearing in the same space (check edx/piazza for latex templating files and instructions).
+\textbf{Make sure that your answers (typed or handwritten) are within the
+dedicated regions for each question/part.  If you do not follow this format, we may deduct points.}
+
+\item \textbf{How to submit:}  Go to www.pandagrader.com. Log in and click on the
+class CS188 Spring 2014. Click
+on the submission titled Written HW 9 and upload your pdf containing your answers. If this is your first time using
+pandagrader, you will have to set your password before logging in the
+first time.  To do so, click on "Forgot your password" on the login
+page, and enter your email address on file with the registrar's office
+(usually your @berkeley.edu email address). You will then receive an
+email with a link to reset your password.
+
+\end{itemize}
+
+
+\begin{center}
+\begin{tabular}{|r|c|}
+\hline
+\begin{minipage}{3cm}~\\Last Name~\\~\\\end{minipage} & \begin{minipage}[c][1cm][c]{8cm} ~ \NameLast \end{minipage}  \\
+\hline
+\begin{minipage}{3cm}~\\First Name~\\~\\\end{minipage} & \NameFirst \\
+\hline
+\begin{minipage}{3cm}~\\SID~\\~\\\end{minipage} & \SID \\
+\hline
+\begin{minipage}{3cm}~\\Email~\\~\\\end{minipage} & \Email \\
+\hline
+\begin{minipage}{3cm}~\\Collaborators~\\~\\\end{minipage} & \Collaborators \\
+\hline
+
+\end{tabular}
+\end{center}
+
+
+
+\vfill
+
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+
+\begin{center}
+{\bf For staff use only}\\
+\begin{Large}
+\begin{tabular}{|r|r|r|}
+\hline
+Q. 1 & Q. 2 & Total\\
+\hline
+
+\quad/10 & \quad/20 & \qquad/30 \\
+\hline
+\end{tabular}\end{Large}
+\end{center}
+
+
+\newpage
+\input{q1}
+\newpage
+\input{q2}
+\newpage
+
+
+\end{document}

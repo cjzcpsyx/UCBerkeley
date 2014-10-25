@@ -1,0 +1,186 @@
+\begin{problem}{Extending the Forward Algorithm}
+
+%We saw how for HMMs the forward algorithm was an efficient way to do exact inference for a specific set of queries.
+
+Consider the HMM graph structure shown below. The joint distribution is listed to the right of the graph. \\
+\begin{minipage}{5cm} {
+\tikz{
+\node[latent] (X1) {$X_1$};
+\node[latent,xshift=2cm] (X2) {$X_2$};
+\node[latent,xshift=4cm] (X3) {$X_3$};
+\node[obs, yshift=-2cm] (E1) {$E_1$};
+\node[obs, yshift=-2cm, xshift=2cm] (E2) {$E_2$};
+\node[obs, yshift=-2cm, xshift=4cm] (E3) {$E_3$};
+\edge{X1}{E1}
+\edge{X2}{E2}
+\edge{X3}{E3}
+\edge{X1}{X2}
+\edge{X2}{X3} 
+}}
+\end{minipage}
+\begin{minipage}{15cm} {
+$P(X_1, E_1, X_2, E_2, ..., X_T, E_T) = P(X_1) P(E_1 | X_1)
+\prod_{t=2}^T P(X_t | X_{t-1}) P(E_t | X_t)$
+}
+\end{minipage}
+\vspace{0.1in}
+
+Recall the Forward algorithm is a two step iterative algorithm used to approximate the probability distribution $P(X_t | e_1, \dots, e_t)$. The two steps of the algorithm are as follows:
+\begin{description}
+\item[Elapse Time]
+  $P(X_t | e_1, \dots, e_{t-1}) = \sum_{x_{t-1}} P(X_t | x_{t-1}) P(x_{t-1} | e_1, \dots, e_{t-1})$
+\item[Observe]
+  $P(X_t | e_1,\dots, e_t) = \frac{P(e_t | X_t) P(X_t | e_1, \dots, e_{t-1})}{\sum_{x_t} P(e_t | x_t) P(x_t | e_1, \dots, e_{t-1})}$
+\end{description}
+
+For this problem we will consider modifying the forward algorithm as the HMM graph structure changes. Our goal will continue to be to create an iterative algorithm which is able to compute the distribution of states, $X_t$, given all available evidence from time 0 to time $t$.
+\\\\
+Note: If the probabilities required can be computed without \textit{any} change to original update equations, write {\bf NO CHANGE}.\\
+
+
+Consider the graph below where new observed variables, $Z_i$, are introduced and influence the evidence. The joint distribution is listed to the below the graph. \\
+\begin{center}
+\tikz{
+\node[latent] (X1) {$X_1$};
+\node[latent,xshift=2cm] (X2) {$X_2$};
+\node[latent,xshift=4cm] (X3) {$X_3$};
+\node[obs, xshift=-1cm, yshift=-1cm] (Z1) {$Z_1$};
+\node[obs,xshift=1cm, yshift=-1cm] (Z2) {$Z_2$};
+\node[obs,xshift=3cm,, yshift=-1cm] (Z3) {$Z_3$};
+\node[obs, yshift=-2cm] (E1) {$E_1$};
+\node[obs, yshift=-2cm, xshift=2cm] (E2) {$E_2$};
+\node[obs, yshift=-2cm, xshift=4cm] (E3) {$E_3$};
+\edge{X1}{E1}
+\edge{X2}{E2}
+\edge{X3}{E3}
+\edge{X1}{X2}
+\edge{X2}{X3}
+\edge{Z1}{E1}
+\edge{Z2}{E2}
+\edge{Z3}{E3}
+}
+\end{center}
+\begin{center} {
+$P(X_1, Z_1, E_1, ..., X_T, Z_T, E_T) = P(X_1) P(Z_1) P(E_1 | X_1, Z_1)  
+\prod_{t=2}^T P(X_t | X_{t-1}) P(Z_t) P(E_t | X_t , Z_t)$ \\
+}
+\end{center}
+
+\begin{question}[3]
+State the modified Elapse Time update.
+
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][5.0cm][t]{18cm} $P(X_t | e_1, \dots, e_{t-1}, z_1, \dots, z_{t-1}) = $ \TwoA \end{minipage}}\\
+
+}
+
+\end{question}
+
+\begin{question}[3]
+State the modified Observe update. \\
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][5.0cm][t]{18cm} $P(X_t | e_1, \dots, e_{t}, z_1, \dots, z_t) = $ \TwoB \end{minipage}}
+}
+\end{question}
+
+{
+Next, consider the graph below where the $Z_i$ variables are unobserved. The joint distribution is listed to the below the graph. \\
+}
+\begin{minipage}{15cm}
+\begin{center}
+\tikz{
+\node[latent] (X1) {$X_1$};
+\node[latent,xshift=2cm] (X2) {$X_2$};
+\node[latent,xshift=4cm] (X3) {$X_3$};
+\node[latent, xshift=-1cm, yshift=-1cm] (Z1) {$Z_1$};
+\node[latent,xshift=1cm, yshift=-1cm] (Z2) {$Z_2$};
+\node[latent,xshift=3cm,, yshift=-1cm] (Z3) {$Z_3$};
+\node[obs, yshift=-2cm] (E1) {$E_1$};
+\node[obs, yshift=-2cm, xshift=2cm] (E2) {$E_2$};
+\node[obs, yshift=-2cm, xshift=4cm] (E3) {$E_3$};
+\edge{X1}{E1}
+\edge{X2}{E2}
+\edge{X3}{E3}
+\edge{X1}{X2}
+\edge{X2}{X3}
+\edge{Z1}{E1}
+\edge{Z2}{E2}
+\edge{Z3}{E3}
+}
+\end{center}
+\end{minipage} 
+
+
+$$P(X_1, Z_1, E_1, ..., X_T, Z_T, E_T) = P(X_1) P(Z_1) P(E_1 | X_1, Z_1)  
+\prod_{t=2}^T P(X_t | X_{t-1}) P(Z_t) P(E_t | X_t , Z_t)$$
+
+
+\begin{question}[3]
+State the modified Elapse Time update.\\
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][5.0cm][t]{18cm} $P(X_t | e_1, \dots, e_{t-1}) = $ \TwoC \end{minipage}}\\
+
+}
+\end{question}
+
+
+\begin{question}[3]
+State the modified Observe update.\\
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][5.0cm][t]{18cm} $P(X_t | e_1, \dots, e_{t}) = $ \TwoD \end{minipage}}\\
+
+}
+\end{question}
+\newpage
+%
+Finally, consider a graph where the newly introduced variables are unobserved and influenced by the evidence nodes. The joint distribution is listed to the right of the graph.\\
+
+\begin{minipage}{4.5cm}
+\tikz{
+\node[latent] (X1) {$X_1$};
+\node[latent,xshift=2cm] (X2) {$X_2$};
+\node[latent,xshift=4cm] (X3) {$X_3$};
+\node[latent, yshift=-3cm] (Z1) {$Z_1$};
+\node[latent,xshift=2cm, yshift=-3cm] (Z2) {$Z_2$};
+\node[latent,xshift=4cm,, yshift=-3cm] (Z3) {$Z_3$};
+\node[obs, yshift=-1.5cm] (E1) {$E_1$};
+\node[obs, yshift=-1.5cm, xshift=2cm] (E2) {$E_2$};
+\node[obs, yshift=-1.5cm, xshift=4cm] (E3) {$E_3$};
+\edge{X1}{E1}
+\edge{X2}{E2}
+\edge{X3}{E3}
+\edge{X1}{X2}
+\edge{X2}{X3}
+\edge{E1}{Z1}
+\edge{E2}{Z2}
+\edge{E3}{Z3}
+}
+\end{minipage}
+\begin{minipage}{15cm}
+\begin{center}{
+$P(X_1, Z_1, E_1, ..., X_T, Z_T, E_T) = P(X_1) P(E_1 | X_1) P(Z_1 | E_1)  
+\prod_{t=2}^T P(X_t | X_{t-1}) P(E_t | X_t) P(Z_t | E_t) $ \\
+}
+\end{center}
+\end{minipage}
+
+
+\begin{question}[3]
+State the modified Elapse Time update.\\
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][5.0cm][t]{18cm} $P(X_t | e_1, \dots, e_{t-1}) = $ \TwoE \end{minipage}}\\
+
+}
+\end{question}
+
+\begin{question}[3]
+State the modified Observe update.\\
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][5.0cm][t]{18cm} $P(X_t | e_1, \dots, e_{t}) = $ \TwoF \end{minipage}}\\
+
+}
+\end{question}
+
+
+\end{problem}
+

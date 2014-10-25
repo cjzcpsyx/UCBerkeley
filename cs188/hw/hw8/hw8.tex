@@ -1,0 +1,240 @@
+%%% Please replace what is within each curly bracket with the correct information below. %%%
+%%% The first field is already filled in for you.  %%%
+\def\ClassName {CS188} % Your course 
+\def\NameLast {Jianzhong}  % Your last name
+\def\NameFirst {Chen}  % Your first name
+\def\SID{23478230}  % Your SID
+\def\Email{chenjianzhong@berkeley.edu} % Your pandagrader email
+\def\Collaborators{None} % Any collaborators
+
+\def\OneA{
+on expectation, 90 percent of the samples will be rejected, because P(A=+a)=0.1
+}
+\def\OneBi{
+0.05
+}
+\def\OneBii{
+0.08
+}
+\def\OneBiii{
+0.08
+}
+\def\OneC{
+$\frac{0.05+0.08}{0.05+0.08+0.08}=\frac{13}{21}$
+}
+\def\OneDLikelihood{
+$P(C|+a)$
+}
+\def\OneDGibbs{
+$P(C|+d)$
+}
+\def\OneDJustify{
+because likelihood sampling only takes upstream evidence into account, but Gibbs sampling takes both upstream and downstream into account
+}
+
+\def\TwoA{
+\item \mcqb $f_1(+b) = f_1(-b) = 1$
+\item \mcqb $f_1(+b) = f_1(-b) = 0$
+\item \mcqs $f_1(B)$ \textit{cannot} be computed from knowing only the graph
+  structure.
+\item \mcqb $f_1(B)$ \textit{can} be computed from knowing only the graph
+  structure but is not equal to any of the provided options.
+}
+\def\TwoAExplanation{
+B depends on A, so $f_1(B)$ depends on A
+}
+\def\TwoB{
+\item \mcqs $g_1(+b) = g_1(-b) = 1$
+\item \mcqb $g_1(+b) = g_1(-b) = 0$
+\item \mcqb $g_1(B)$ \textit{cannot} be computed from knowing only the graph
+  structure.
+\item \mcqb $g_1(B)$ \textit{can} be computed from knowing only the graph
+  structure but is not equal to any of the provided options.
+}
+\def\TwoBExplanation{
+$g_1(+b)=\sum_{c}{P(c|+b)P(c)}=\sum_{c}{P(c|+b)}\sum_{c}{P(c)}=1$ and $g_1(-b)=\sum_{c}{P(c|-b)P(c)}=\sum_{c}{P(c|-b)}\sum_{c}{P(c)}=1$
+}
+\def\TwoC{
+\item \mcqs $h_1(+a) = h_1(-a) = 1$
+\item \mcqb $h_1(+a) = h_1(-a) = 0$
+\item \mcqb $h_1(A)$ \textit{cannot} be computed from knowing only the graph
+  structure.
+\item \mcqb $h_1(A)$ \textit{can} be computed from knowing only the graph
+  structure but is not equal to any of the provided options.
+}
+\def\TwoCExplanation{
+$h_1(+a)=\sum_{d}{P(d|+a)P(d)}=\sum_{d}{P(d|+a)}\sum_{d}{P(d)}=1$ and $h_1(-a)=\sum_{d}{P(d|-a)P(d)}=\sum_{d}{P(d|-a)}\sum_{d}{P(d)}=1$
+}
+\def\TwoD{
+\item \mcqb $i_2(+b) = i_2(-b) = 1$
+\item \mcqb $i_2(+b) = i_2(-b) = 0$
+\item \mcqs $i_2(B)$ \textit{cannot} be computed from knowing only the graph
+  structure.
+\item \mcqb $i_2(B)$ \textit{can} be computed from knowing only the graph
+  structure but is not equal to any of the provided options.
+}
+\def\TwoDExplanation{
+because B depends on A
+}
+\def\TwoE{
+\item \mcqs $j_1(+c) = j_1(-c) = 1$
+\item \mcqb $j_1(+c) = j_1(-c) = 0$
+\item \mcqb $j_1(C)$ \textit{cannot} be computed from knowing only the graph
+  structure.
+\item \mcqb $j_1(C)$ \textit{can} be computed from knowing only the graph
+  structure but is not equal to any of the provided options.
+}
+\def\TwoEExplanation{
+$j_1(+c)=\sum_{f}{P(f|+c)P(d)}=\sum_{f}{P(f|+c)}\sum_{f}{P(f)}=1$ and $j_1(-c)=\sum_{f}{P(f|-c)P(f)}=\sum_{f}{P(f|-c)}\sum_{f}{P(f)}=1$
+}
+\def\TwoF{
+\item \mcqs $k_2(+b) = k_2(-b) = 1$
+\item \mcqb $k_2(+b) = k_2(-b) = 0$
+\item \mcqb $k_2(B)$ \textit{cannot} be computed from knowing only the graph
+  structure.
+\item \mcqb $k_2(B)$ \textit{can} be computed from knowing only the graph
+  structure but is not equal to any of the provided options.
+}
+\def\TwoFExplanation{
+eliminating F and C involves summing up a conditional distribution and a marginal distribution, since both of them are distributions, the sum has to equal to 1
+}
+\def\TwoG{
+\item \mcqb $l_1(+b,+g) = l_1(-b,+g) = 1$
+\item \mcqb $l_1(+b,+g) = l_1(-b,+g) = 0$
+\item \mcqs $l_1(B,+g)$ \textit{cannot} be computed from knowing only the graph
+  structure.
+\item \mcqb $l_1(B,+g)$ \textit{can} be computed from knowing only the graph
+  structure but is not equal to any of the provided options.
+}
+\def\TwoGExplanation{
+because G depends on E
+}
+\def\TwoH{
+\mcqb $A \phantom{----}$  & \mcqb $B \phantom{----}$  & \mcqs $C \phantom{----}$  & \mcqs $D \phantom{----}$  & \mcqb $E \phantom{----}$   \\ [1em]
+\mcqs $F \phantom{----}$  & \mcqb $G \phantom{----}$  & \mcqs $H \phantom{----}$  & \mcqb $I \phantom{----}$  & \mcqs $J \phantom{----}$   \\ [1em]
+\mcqs $K \phantom{----}$  & \mcqs $L \phantom{----}$  & \mcqb $M \phantom{----}$  & \mcqs $N \phantom{----}$  & \mcqs $O \phantom{----}$   \\ [1em]
+\mcqs $P \phantom{----}$  & \mcqb $Q \phantom{----}$  & \mcqs $R \phantom{----}$ & & \\[1em]
+}
+\def\TwoHExplanation{
+because if a variable is not in the union of the ancestors of the query and the ancestors of the evidence can be ignored.
+}
+%%%%%%%%%%%%%%%%%%%%%% DO NOT CHANGE ANYTHING BELOW THIS LINE %%%%%%%%%%%%%%%%%%%%%%%%%
+\def \showSolutions {} 
+\documentclass[twoside]{article}
+
+\usepackage{class}
+%\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{amsmath,mathrsfs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{mathcomp}
+\usepackage{tabularx}
+\usepackage{wasysym}
+\usepackage{pbox}
+\usetikzlibrary{bayesnet}
+
+% Bubbles for multiple choice questions
+\newcommand{\mcqbubble}{\bigcirc}
+\newcommand{\mcqbubblefill}{\Large\newmoon}
+
+% shorthand
+\newcommand{\mcqb}{$\bigcirc$\ \ }
+\newcommand{\mcqs}{\solution{\mcqb}{$\Large\newmoon$\ \ }}
+
+% pruning
+\newcommand{\prune}{\includegraphics[width=0.2in]{figures/red_x}}
+% title is Written HW8
+\title{Written HW8}
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+
+\smallskip
+\smallskip
+\textbf{INSTRUCTIONS}
+
+\begin{itemize}
+\item \textbf{Due:} Tuesday, April 8th 2014 11:59 PM
+\item \textbf{Policy:} Can be solved in groups (acknowledge collaborators) but must
+be written up individually. However,
+we strongly encourage you to first work alone for about 30 minutes total in order to simulate an exam environment.  Late homework
+will not be accepted.
+\item \textbf{Format:}
+You must solve the questions on this handout (either through a pdf annotator, or by printing, then scanning; we recommend the latter to match exam setting). Alternatively, you can typeset a pdf on your own that has answers appearing in the same space (check edx/piazza for latex templating files and instructions).
+\textbf{Make sure that your answers (typed or handwritten) are within the
+dedicated regions for each question/part.  If you do not follow this format, we may deduct points.}
+
+\item \textbf{How to submit:}  Go to www.pandagrader.com. Log in and click on the
+class CS188 Spring 2014. Click
+on the submission titled Written HW 8 and upload your pdf containing your answers. If this is your first time using
+pandagrader, you will have to set your password before logging in the
+first time.  To do so, click on "Forgot your password" on the login
+page, and enter your email address on file with the registrar's office
+(usually your @berkeley.edu email address). You will then receive an
+email with a link to reset your password.
+
+\end{itemize}
+
+
+\begin{center}
+\begin{tabular}{|r|c|}
+\hline
+\begin{minipage}{3cm}~\\Last Name~\\~\\\end{minipage} & \begin{minipage}[c][1cm][c]{8cm} ~ \NameLast \end{minipage}  \\
+\hline
+\begin{minipage}{3cm}~\\First Name~\\~\\\end{minipage} & \NameFirst \\
+\hline
+\begin{minipage}{3cm}~\\SID~\\~\\\end{minipage} & \SID \\
+\hline
+\begin{minipage}{3cm}~\\Email~\\~\\\end{minipage} & \Email \\
+\hline
+\begin{minipage}{3cm}~\\Collaborators~\\~\\\end{minipage} & \Collaborators \\
+\hline
+
+\end{tabular}
+\end{center}
+
+
+
+\vfill
+
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+
+\begin{center}
+{\bf For staff use only}\\
+\begin{Large}
+\begin{tabular}{|r|r|r|}
+\hline
+Q. 1 & Q. 2 & Total\\
+\hline
+
+\quad/15 & \quad/15 & \qquad/30 \\
+\hline
+\end{tabular}\end{Large}
+\end{center}
+
+
+\newpage
+\input{q1}
+\newpage
+\input{q2}
+\newpage
+
+
+\end{document}

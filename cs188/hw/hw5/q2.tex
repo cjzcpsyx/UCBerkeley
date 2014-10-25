@@ -1,0 +1,34 @@
+\begin{problem}[]{Reinforcement Learning}
+
+Recall that reinforcement learning agents gather tuples of the form $<s_t, a_t, r_{t+1}, s_{t+1}, a_{t+1}>$ to update the value or Q-value function.
+In both of the following cases, the agent acts at each step as follows: with probability 0.5 it follows a fixed (not necessarily optimal) policy $\pi$ and otherwise it chooses an action uniformly at random.  Assume that in both cases updates are applied infinitely often, state-action pairs are all visited infinitely often, the discount factor satisfies $0 < \gamma < 1$, and learning rates $\alpha$ are all decreased at an appropriate pace.
+
+\begin{question}[4] The Q-learning agent performs the following update:
+\begin{align*}
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [r_{t+1} + \gamma \max_a Q(s_{t+1}, a) - Q(s_t, a_t)]
+\end{align*}
+
+Will this process converge to the optimal Q-value function?
+If yes, write ``Yes.''
+If not, give an interpretation (in terms of kind of value, optimality, etc.) of what it will converge to, or state that it will not converge:
+
+\solution{\vspace{1.0cm}}{
+    \fbox{\begin{minipage}[c][4.5cm][c]{17cm} 2a: \TwoA        \end{minipage}}
+}
+
+\end{question}
+
+\begin{question}[4] Another reinforcement learning algorithm is called SARSA, and it performs the update
+\begin{align*}
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [r_{t+1} + \gamma Q(s_{t+1}, a_{t+1}) - Q(s_t, a_t)]
+\end{align*}
+
+Will this process converge to the optimal Q-value function?
+If yes, write ``Yes.''
+If not, give an interpretation (in terms of kind of value, optimality, etc.) of what it will converge to, or state that it will not converge:
+
+\solution{\vspace{1.0cm}}{
+    \fbox{\begin{minipage}[c][4.5cm][c]{17cm} 2b: \TwoB        \end{minipage}}
+}
+\end{question}
+\end{problem}

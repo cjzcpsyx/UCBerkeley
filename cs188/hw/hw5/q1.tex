@@ -1,0 +1,134 @@
+\begin{problem}[]{Worst-Case Markov Decision Processes}
+
+Most techniques for Markov Decision Processes focus on calculating
+$V^*(s)$, the maximum expected utility of state $s$ (the expected discounted
+sum of rewards accumulated when starting from state $s$ and acting
+optimally). This maximum expected utility $V^*(s)$ satisfies the
+following recursive expression, known as the Bellman Optimality Equation:
+\begin{equation*}
+  V^*(s) =
+  \max_a \sum_{s'} T(s,a,s') \left[ R(s,a,s') + \gamma V^*(s') \right].
+\end{equation*}
+
+In this question, instead of measuring the quality of a policy by its expected
+utility, we will consider the worst-case utility as our measure of quality.
+Concretely, $L^\pi(s)$ is the minimum utility it is possible to attain
+over all
+(potentially infinite) state-action sequences that can result from
+executing the policy $\pi$ starting from state $s$.  $L^*(s) = \max_{\pi}
+L^\pi(s)$ is the optimal worst-case utility. In words, $L^*(s)$ is the
+\emph{greatest lower bound} on the utility of state $s$: the discounted sum of
+rewards that an agent acting optimally is guaranteed to achieve when starting
+in state $s$.
+
+Let $C(s,a)$ be the set of all states that the agent has a non-zero
+probability of transferring to from state $s$ using action $a$. Formally,
+$C(s,a) = \left \{ s' \mid T(s,a,s') > 0 \right \}$. This notation may
+be useful to you.
+
+\begin{question}[5]
+  Express $L^*(s)$ in a recursive form similar to the Bellman Optimality
+  Equation. Circle all that apply.
+\end{question}
+
+\begin{tabular}{cl} &
+\OneA
+\end{tabular}
+
+\begin{question}[3]
+Recall that the Bellman update for value iteration is:
+\begin{equation*}
+  V_{i+1}(s) \leftarrow \max_a \sum_{s'} T(s,a,s') \left[ R(s,a,s') + \gamma V_{i}(s') \right] \nonumber
+\end{equation*}
+Formally define a similar update for calculating $L_{i+1}(s)$ using $L_i$.
+\end{question}
+\solution{\vspace{1cm}}{
+
+  \begin{equation*}
+    \fbox{\begin{minipage}[c][1.2cm][c]{12cm} \OneB
+    \end{minipage}}
+  \end{equation*}
+}
+
+\newpage
+\begin{question}[5]
+  From this point on, you can assume that $R(s,a,s') = R(s)$ (rewards are
+  a function of the current state) and that $R(s) \geq 0$ for all
+  $s$. With these assumptions, the Bellman Optimality Equation for Q-functions
+  is
+  \vspace{-0.1cm}
+  \begin{equation*}
+    Q^*(s,a) =  R(s) + \sum_{s'} T(s,a,s')
+    \left[ \gamma \max_{a'} Q^*(s',a') \right]
+  \end{equation*}
+  {Let $M(s,a)$ be the \emph{greatest lower bound} on the utility of state $s$
+  when taking action $a$ In words, if an
+  agent plays optimally after taking action $a$ from state $s$, this is the
+  utility the agent is guaranteed to achieve. Formally define $M^*(s,a)$, in
+  a recursive form similar to how $Q^*$ is defined. Circle all that apply.}
+\end{question}
+\begin{tabular}{cl} &
+\OneC
+\end{tabular}
+
+\vspace{-0.2cm}
+\begin{question}[5]
+  Recall that the Q-learning update for maximizing expected utility is:
+  \vspace{-0.1cm}
+  \begin{equation*}
+    Q(s,a) \leftarrow (1 - \alpha) Q(s,a)
+    + \alpha \left( R(s) + \gamma \max_{a'} Q(s', a') \right),
+  \end{equation*}
+  \vspace{-0.1cm}
+  where $\alpha$ is the learning rate, $(s, a, s', R(s))$ is the sample that
+  was just experienced (``we were in state $s$, we took action $a$, we ended
+  up in state $s'$, and we received a reward $R(s)$).  Circle the update
+  equation below that results in $M(s,a) = M^*(s,a)$ when run sufficiently long
+  under a policy that visits all state-action pairs infinitely often.  If more
+  than one of the update equations below achieves this, select the one that
+  would converge more quickly.  Note that in this problem, we do not know $T$
+  or $C$ when starting to learn.
+\vspace{-0.3cm}
+  \begin{align*} 
+    \text{\OneDi{(i)} \ \ } & C(s, a)  \leftarrow \{s'\} \cup C(s,a)
+    \qquad\qquad ~ \left(\mbox{i.e.\ add $s'$ to $C(s, a)$}\right)
+    \\
+    & M(s,a)  \leftarrow (1 - \alpha) M(s,a) + \alpha \left( R(s) + \gamma
+    \sum_{s' \in C(s,a)} \max_{a'} M(s', a') \right) \\\\
+    \text{\OneDii{(ii)} \ \ } & C(s, a) \leftarrow \{s'\} \cup C(s,a)
+    \qquad\qquad ~ \left(\mbox{i.e.\ add $s'$ to $C(s, a)$}\right)
+    \\
+    & M(s,a)  \leftarrow (1 - \alpha) M(s,a) + \alpha \left( R(s) +
+    \gamma \min_{s' \in C(s,a)} \max_{a'} M(s', a') \right) \\\\
+    \text{\OneDiii{(iii)} \ \ } & C(s, a)  \leftarrow \{s'\} \cup C(s,a)
+    \qquad\qquad ~ \left(\mbox{i.e.\ add $s'$ to $C(s, a)$}\right)
+    \\
+    & M(s,a) \leftarrow R(s) + \gamma  \min_{s' \in C(s,a)}
+    \max_{a'} M(s', a') \\\\
+    \text{\OneDiv{(iv)} \ \ } & M(s, a)
+    \leftarrow (1 - \alpha) M(s, a) + \alpha \min\left\{
+    M(s, a), R(s) + \gamma \max_{a'} M(s', a')\right\}.
+  \end{align*}
+
+\end{question}
+\vspace{-0.3cm}
+\begin{question}[2]
+Suppose our agent selected actions to maximize $L^*(s)$, and $\gamma = 1$. What non-MDP-related technique from this class would that resemble? (a one word answer will suffice)
+
+\vspace{-0.1cm}
+\solution{\vspace{1.0cm}}{
+    \fbox{\begin{minipage}[c][0.5cm][c]{17cm} 1e: \OneE \end{minipage}}
+}
+\vspace{-0.1cm}
+
+\end{question}
+
+\vspace{-0.2cm}
+\begin{question}[2]
+Suppose our agent selected actions to maximize $L_3(s)$ (our estimate of $L^*(s)$ after 3 iterations of our ``value-iteration''-like backup in section $b$) and $\gamma = 1$. What non-MDP-related technique from this class would that resemble? (a brief answer will suffice) \\
+\vspace{-0.1cm}
+\solution{\vspace{1.0cm}}{
+    \fbox{\begin{minipage}[c][0.5cm][c]{17cm} 1f: \OneF \end{minipage}}
+}
+\end{question}
+\end{problem}

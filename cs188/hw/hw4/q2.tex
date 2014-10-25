@@ -1,0 +1,56 @@
+%%ES made this problem according to Pieter's suggestions below.
+
+%%PA: how about making this a problem on variants of value iteration /
+%%games, it could have 4 parts:
+%%Part 1: grab Michael's question from "short questions" about costs
+%%instead of rewards
+%% Part 2: ask about what happens when the ghosts can choose from all
+%% states s' that have non-zero probability according to T(s,a,s')
+%% Part 3: ask if Pacman were to run Q-learning---and assume builds up
+%% full table with one entry for each state action pair, and visits
+%% every state-action pair infinitely often, and learning rate alpha
+%% goes to zero the right way for Q-learning.   Will the learned
+%% Q-values be equal to:  and then some options, including the minimax
+%% option when able to search till the end of the game (which is the true answer)
+%% Part 4: ask if Pacman were to run Q-learning but now with features
+%% --- will it converge to the same answer as minimax (when able to
+%% search till the end of the game and evaluate with same features at
+%% end) --> false;
+%%Part 5: maybe some other variant you can come up with, maybe related to your day-to-day change in policy (would require more thought though)
+
+%% overall this will require some more thought; make sure to email
+%% updates pdf to Dan once you have it (not clear that he has svn
+%% access set up right now)
+
+\begin{problem}[]{The Value of Games}
+
+Pacman is the model of rationality and seeks to maximize his expected utility,\\
+but that doesn't mean he never plays games.
+
+
+\begin{question}[4] \textbf{A Costly Game.}
+  Pacman is now stuck playing a new game with only costs and no payoff. Instead
+  of maximizing expected utility $V(s)$, he has to minimize expected costs
+  $J(s)$.  In place of a reward function, there is a cost function $C(s,a,s')$
+  for transitions from $s$ to $s'$ by action $a$. We denote the discount
+  factor by $\gamma \in (0,1)$. $J^*(s)$ is the expected cost incurred by the
+  optimal policy. Which one of the following equations is satisfied by $J^*$?
+
+\TwoA
+
+
+\end{question}
+
+
+\begin{question}[4] \textbf{It's a conspiracy again!}
+  The ghosts have rigged the costly game so that once Pacman takes an action
+  they can pick the outcome from all states $s' \in S'(s,a)$, the set of all
+  $s'$ with non-zero probability according to $T(s,a,s')$. Choose the correct
+  Bellman-style equation for Pacman against the adversarial ghosts.
+
+\TwoB
+\end{question}
+
+\vspace{-.4in}
+
+\end{problem}

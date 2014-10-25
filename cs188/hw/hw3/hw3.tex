@@ -1,0 +1,260 @@
+%%% Please replace what is within each curly bracket with the correct information below. %%%
+%%% The first field is already filled in for you.  %%%
+\def\ClassName {CS188} % Your course 
+\def\NameLast {Chen}  % Your last name
+\def\NameFirst {Jianzhong}  % Your first name
+\def\SID{23478230}  % Your SID
+\def\Email{chenjianzhong@berkeley.edu} % Your pandagrader email
+\def\Collaborators{None} % Any collaborators
+
+%%% start 1a %%%
+%%% fill in within each bracket the value of the node, i.e. [1,3,2]
+\def\OneAroot{(8,2,-10)}
+\def\OneAnodeLeft{(8,2,-10)}
+\def\OneAnodeRight{(-5,10,-5)}
+\def\OneAnodeLeftLeft{(8,2,-10)}
+\def\OneAnodeLeftRight{(-10,0,10)}
+\def\OneAnodeRightLeft{(-9,4,5)}
+\def\OneAnodeRightRight{(-5,10,-5)}
+
+%%% end 1a %%%
+
+
+%%% start 1b %%%
+%%% fill in within each bracket with \prune if you wish to mark a branch as pruned.
+\def\OneBleft{ }
+\def\OneBright{ }
+\def\OneBleftleft{ }
+\def\OneBleftright{ }
+\def\OneBrightleft{ }
+\def\OneBrightright{}
+\def\OneBleftleftleft{ }
+\def\OneBleftrightleft{ }
+\def\OneBleftrightright{\prune}
+\def\OneBrightleftleft{ }
+\def\OneBrightrightleft{ }
+\def\OneBrightrightright{\prune}
+
+\def\OneBExplanation{After we exploring (8,2,-10), we know the best option for player2 is currently 2, and the best option for player1 is 8. Then we explore (-8,-1,9), because sum of all three players is always zero, and all utilities are in the interval [-10,10], we can not get a score better than -11(0-9-2=-11) for player1 from the other child of right maximizer, so we prone the other child. Similarly, when we explore the node (-5,10,-5), we know we can not get a score better than 1(0-4-(-5)=1) for player1 from the other child.}
+%%% end 1b %%%
+
+
+%%% start 1c %%%
+%%% fill in within each bracket with \prune if you wish to mark a branch as pruned.
+\def\OneCleft{ }
+\def\OneCright{ }
+\def\OneCleftleft{ }
+\def\OneCleftright{ }
+\def\OneCrightleft{ }
+\def\OneCrightright{\prune}
+\def\OneCleftleftleft{ }
+\def\OneCleftrightleft{ }
+\def\OneCleftrightright{\prune}
+\def\OneCrightleftleft{ }
+\def\OneCrightrightleft{ }
+\def\OneCrightrightright{ }
+
+\def\OneCExplanation{for node ((8,2,-10), the reason is the same as above one. After we explore the node (-9,4,5), we know that we can not get a score better than 6 (0-4-(-10)=6) for player1 from middle maximizer, because the sum of all utilities is 0 and all utilities are in the interval [-10,10]}
+%%% end 1c %%%
+
+%%% begin 1d  %%%
+\def\OneDiAnswer{$v_L==C$}
+\def\OneDiExplanation{If $v_L$ is the maximum we can have for utilities, we can prune other children}
+
+\def\OneDiiAnswer{$C-v_M<alpha$}
+\def\OneDiiExplanation{Because the minimum value we can have for $v_R$ is -C, the maximum value we can have for $v_L$ in middle maximizer is $0-v_L-(-C)=C-v_L$}
+
+\def\OneDiiiAnswer{$c-v_R<beta$}
+\def\OneDiiiExplanation{Because the minimum value we can have for $v_L$ is -C, the maximum value we can have for $v_M$ in the right maximizer is $0-v_R-(-C)=C-v_R$}
+%%% end 1d %%%
+
+
+%%% begin 1e %%%
+\def\OneEi{Right is the optimal action. In the worst case, the utility achieved is -9}
+
+%replace \mcqb with \mcqs to select the correct answer.
+\def\OneEii{
+\item \mcqb  Running the strategy described in the pseudo-code from question (d).
+\item \mcqs  Running standard minimax, considering Left's utility only, considering Left to be a maximizer and considering both Middle and Right to be minimizers.
+\item \mcqb  Running standard expectimax, considering Left's utility only, considering Left to be a maximizer and considering both Middle and Right to be chance nodes.
+\item \mcqb None of the above.
+}
+
+%%% end 1e %%%
+
+%%% begin 2a (i) %%%
+
+\def\TwoAiUAOne{6}
+\def\TwoAiUATwo{5}
+\def\TwoAiUBOne{6}
+\def\TwoAiUBTwo{7}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% end 2a (i) %%%
+
+%%% begin 2a (ii) %%%
+% Instructions: add \solutioncircle in front of your answer choice.
+\def\TwoAii {
+
+{\centering 
+{$R_{A, 1}$} \hfill 
+{$R_{A, 2}$} \hfill 
+{\solutioncircle{$R_{B, 1}$}} \hfill 
+{$R_{B, 2}$}
+}
+
+}
+%%% end 2a (ii) %%%
+
+
+%%% begin 2a (iii) %%%
+\def\TwoAiii{6 dollars}
+%%% end 2b (iii) %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% begin 2b (i) %%%
+
+\def\TwoBiUAOne{36}
+\def\TwoBiUATwo{50}
+\def\TwoBiUBOne{42}
+\def\TwoBiUBTwo{49}
+
+%%% end 2b (i) %%%
+
+%%% begin 2b (ii) %%%
+% Instructions: add \solutioncircle in front of your answer choice.
+\def\TwoBii {
+{\centering 
+{$R_{A, 1}$} \hfill 
+{\solutioncircle{$R_{A, 2}$}} \hfill 
+{$R_{B, 1}$} \hfill 
+{$R_{B, 2}$}
+}
+}
+%%% end 2b (ii) %%%
+
+%%% begin 2b (iii) %%%
+\def\TwoBiii{6 dollars}
+%%% end 2b (iii) %%%
+
+%%% begin 2c %%%
+\def\TwoC{5 dollars}
+%%% end 2c %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%% DO NOT CHANGE ANYTHING BELOW THIS LINE %%%%%%%%%%%%%%%%%%%%%%%%%
+\def \showSolutions {} 
+\documentclass[twoside]{article}
+
+\usepackage{class}
+%\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{amsmath,mathrsfs}
+\usepackage{multicol}
+\usepackage{amssymb}
+%\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{mathcomp}
+\usepackage{tabularx}
+\usepackage{wasysym}
+\usepackage{pbox}
+
+% Bubbles for multiple choice questions
+\newcommand{\mcqbubble}{\bigcirc}
+\newcommand{\mcqbubblefill}{\Large\newmoon}
+
+% shorthand
+\newcommand{\mcqb}{$\bigcirc$\ \ }
+\newcommand{\mcqs}{\solution{\mcqb}{$\Large\newmoon$\ \ }}
+
+% pruning
+\newcommand{\prune}{\includegraphics[width=0.2in]{figures/red_x}}
+% title is Written HW3
+\title{Written HW3}
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+
+\smallskip
+\smallskip
+\textbf{INSTRUCTIONS}
+
+\begin{itemize}
+\item \textbf{Due:} Tuesday, February 18th, 2014 11:59 PM
+\item \textbf{Policy:} Can be solved in groups (acknowledge collaborators) but must
+be written up individually. However,
+we strongly encourage you to first work alone for about 30 minutes total in order to simulate an exam environment.  Late homework
+will not be accepted.
+\item \textbf{Format:}
+You must solve the questions on this handout (either through a pdf annotator, or by printing, then scanning; we recommend the latter to match exam setting). Alternatively, you can typeset a pdf on your own that has answers appearing in the same space (check edx/piazza for latex templating files and instructions).
+\textbf{Make sure that your answers (typed or handwritten) are within the
+dedicated regions for each question/part.  If you do not follow this format, we may deduct points.}
+
+\item \textbf{How to submit:}  Go to www.pandagrader.com. Log in and click on the
+class CS188 Spring 2014. Click
+on the submission titled Written HW 3 and upload your pdf containing your answers. If this is your first time using
+pandagrader, you will have to set your password before logging in the
+first time.  To do so, click on "Forgot your password" on the login
+page, and enter your email address on file with the registrar's office
+(usually your @berkeley.edu email address). You will then receive an
+email with a link to reset your password.
+
+\end{itemize}
+
+
+\begin{center}
+\begin{tabular}{|r|c|}
+\hline
+\begin{minipage}{3cm}~\\Last Name~\\~\\\end{minipage} & \begin{minipage}[c][1cm][c]{8cm} ~ \NameLast \end{minipage}  \\
+\hline
+\begin{minipage}{3cm}~\\First Name~\\~\\\end{minipage} & \NameFirst \\
+\hline
+\begin{minipage}{3cm}~\\SID~\\~\\\end{minipage} & \SID \\
+\hline
+\begin{minipage}{3cm}~\\Email~\\~\\\end{minipage} & \Email \\
+\hline
+\begin{minipage}{3cm}~\\Collaborators~\\~\\\end{minipage} & \Collaborators \\
+\hline
+
+\end{tabular}
+\end{center}
+
+
+
+\vfill
+
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+
+\begin{center}
+{\bf For staff use only}\\
+\begin{Large}
+\begin{tabular}{|r|r|r|}
+\hline
+Q. 1 & Q. 2 & Total\\
+\hline
+
+\quad/18 &\quad/12 &\qquad/30 \\
+\hline
+\end{tabular}\end{Large}
+\end{center}
+
+
+\newpage
+\input{q1}
+\newpage
+\input{q2}
+\newpage
+
+
+\end{document}

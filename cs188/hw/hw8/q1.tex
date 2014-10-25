@@ -1,0 +1,185 @@
+\begin{problem}{Bayes' Net Sampling}
+
+Assume you are given the following Bayes' net and the corresponding distributions over the variables in the Bayes' net.
+
+\begin{table}[h]
+\begin{tabular}{c c c c c}
+\multirow{2}{*}{
+\tikz{
+\node[latent] (A) {$A$};%
+\node[latent, yshift=-2cm] (B) {$B$};%
+\node[latent, xshift=2cm, yshift=-1cm] (C) {$C$};%
+\node[latent, xshift=4cm, yshift=-1cm] (D) {$D$};%
+\edge{A}{C};%
+\edge{B}{C};%
+\edge{C}{D};
+}
+}
+&
+\begin{tabular}{|c |c|}
+\hline
+\multicolumn{2}{|c|}{$P(A)$} \\
+\hline
++a & $0.1$\\
+\hline
+-a & $0.9$\\
+\hline
+\end{tabular}
+&
+\begin{tabular}{|c | c|}
+\hline
+\multicolumn{2}{|c|}{$P(B)$} \\
+\hline
++b & .7 \\
+\hline
+-b & .3 \\
+\hline
+\end{tabular}
+&
+\begin{tabular}{| c | c | c | c |}
+\hline
+\multicolumn{4}{|c|}{$P(C | A, B)$}\\
+\hline
++c & +a & +b & .25 \\
+\hline
+-c & +a & +b & .75 \\
+\hline
++c & -a & +b & .6\\
+\hline
+-c & -a & +b & .4\\
+\hline
++c & +a & -b & .5\\
+\hline
+-c & +a & -b & .5\\
+\hline
++c & -a & -b & .2\\
+\hline
+-c & -a & -b & .8\\
+\hline
+\end{tabular}
+&
+\begin{tabular}{| c | c | c |}
+\hline
+\multicolumn{3}{|c|}{$P(D|C)$}\\
+\hline
++d & +c & .5\\
+\hline
+-d & +c & .5\\
+\hline
++d & -c & .8\\
+\hline
+-d & -c & .2\\
+\hline
+\end{tabular}
+\\
+\end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+\begin{question}[3]
+Assume we receive evidence that $A=+a$. If we were to draw samples using rejection sampling, on expectation what percentage of the samples will be {\bf rejected}?
+
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 1a: \OneA \end{minipage}}\\
+
+}
+\end{question}
+
+
+\begin{question}[3]
+Next, assume we observed both $A=+a$ and $D=+d$. What are the weights for the following samples under likelihood weighting sampling?
+
+\solution{
+\begin{center}
+\begin{tabular}{| c | c |}
+\hline
+Sample & Weight\\
+\hline
+&\\
+$(+a, -b, +c, +d)$ & \hspace{8cm} \\
+&\\
+\hline
+&\\
+$(+a, -b, -c, +d)$ &  \hspace{8cm}\\
+&\\
+\hline
+&\\
+$(+a, +b, -c, +d)$ &  \hspace{8cm}\\
+&\\
+\hline
+\end{tabular}
+\end{center}
+\vspace{.5cm}
+}
+{
+\begin{center}
+\begin{tabular}{| c | c |}
+\hline
+Sample & Weight\\
+\hline
+$(+a, -b, +c, +d)$ & 1 Bi: \OneBi \\
+\hline
+$(+a, -b, -c, +d)$ & 1 Bii: \OneBii \\
+\hline
+$(+a, +b, -c, +d)$ & 1 Biii: \OneBiii \\
+\hline
+\end{tabular}
+\end{center}
+}
+\end{question}
+
+\vspace{-.25in}
+
+\begin{question}[3]
+Given the samples in the previous question, estimate $P(-b | +a, +d)$.
+
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 1c: \OneC \end{minipage}}\\
+
+}
+\end{question}
+
+\begin{question}[3]
+Assume we need to (approximately) answer two different inference
+queries for this graph: $P(C | +a)$ and $P(C | +d)$.  You are required
+to answer one query using likelihood weighting and one query using
+Gibbs sampling.   In each case you can only collect a relatively small
+amount of samples, so for maximal accuracy you need to make sure you
+cleverly assign algorithm to query based on how well the algorithm
+fits the query.  Which query would you answer with each algorithm?
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cc}
+
+\begin{tabular}{|c|c|}
+\hline
+Algorithm & \ \ \ \ \ \ \ \ \ Query \ \ \ \ \ \ \ \ \ \\
+\hline
+& \\
+Likelihood Weighting & \solution{}{\OneDLikelihood}\\
+& \\
+\hline
+\end{tabular}
+&
+\begin{tabular}{|c|c|}
+\hline
+Algorithm & \ \ \ \ \ \ \ \ \ Query \ \ \ \ \ \ \ \ \ \\
+\hline
+& \\
+Gibbs Sampling & \solution{}{\OneDGibbs}\\
+& \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} Justification: \OneDJustify \end{minipage}}\\
+}
+
+
+\end{question}
+
+\end{problem}

@@ -1,0 +1,157 @@
+\begin{problem}[]{Preprocessing Bayes' Net Graphs for Inference}
+
+\begin{tabular}{ll}
+\begin{minipage}{0.7\textwidth}
+For (a) and (b), consider the Bayes' net shown on the right.  You are given
+the structure but you are not given the
+conditional probability tables (CPTs).  We will consider the query $P(B|+d)$,
+and reason about which steps in the variable elimination process we might be able
+to execute based on just knowing the graph structure and not the CPTs.
+\end{minipage}
+&
+\begin{minipage}{0.25\textwidth}
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{figures/FA12-MT2-Elimination3V1.pdf}
+\end{figure}
+\end{minipage}
+\\
+\end{tabular}
+\begin{question}[2]
+Assume the first variable we want to eliminate is $A$ and the
+resulting factor would be $f_1(B)$. Mark which one of the following is true.
+\begin{multicols}{3}
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+\TwoA
+\end{itemize}
+\end{multicols}
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 2a Explanation: \TwoAExplanation \end{minipage}}\\
+}
+\end{question}
+
+\begin{question}[2]
+Assume the first variable we eliminate is $C$ and the resulting factor is $g_1(B)$. Mark which one of the following is true.
+\begin{multicols}{3}
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+\TwoB
+\end{itemize}
+\end{multicols}
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 2b Explanation: \TwoBExplanation \end{minipage}}\\
+}
+\end{question}
+
+\begin{tabular}{ll}
+\begin{minipage}{0.7\textwidth}
+For (c) through (g),  consider the Bayes' net shown on the right.  You are given
+the structure but you are not given the
+conditional probability tables (CPTs).  We will consider the query $P(B|+g)$,
+and again we will reason about which steps in the variable elimination process we might be able
+to execute based on just knowing the graph structure and not the CPTs.
+\end{minipage}
+&
+\begin{minipage}{0.25\textwidth}
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.6\textwidth]{figures/FA12-MT2-Elimination3V2.pdf}
+\end{figure}
+\end{minipage}
+\\
+\end{tabular}
+
+
+\begin{question}[2]
+Assume the first variable we eliminate is $D$ and the resulting factor is $h_1(A)$. Mark which one of the following is true.
+\begin{multicols}{3}
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+\TwoC
+\end{itemize}
+\end{multicols}
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 2c Explanation: \TwoCExplanation \end{minipage}}\\
+}
+\end{question}
+
+\begin{question}[2]
+Assume the first 2 variables we eliminate are $A$ and $D$ and the resulting factor is $i_2(B)$. Mark which one of the following is true.
+\begin{multicols}{3}
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+\TwoD
+\end{itemize}
+\end{multicols}
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 2d Explanation: \TwoDExplanation \end{minipage}}\\
+}
+\end{question}
+
+\begin{question}[2]
+Assume the first variable we eliminate is $F$ and the resulting factor is $j_1(C)$. Mark which one of the following is true.
+\begin{multicols}{3}
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+\TwoE
+\end{itemize}
+\end{multicols}
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 2e Explanation: \TwoEExplanation \end{minipage}}\\
+}
+\end{question}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.15\textwidth]{figures/FA12-MT2-Elimination3V2.pdf}
+\caption*{For your convenience we included the Bayes' Net structure
+  again on this page.}
+\end{figure}
+\vspace{-0.2in}
+
+\begin{question}[2]
+Assume the first 2 variables we eliminate are $F$and $C$ and the resulting factor is $k_2(B)$. Mark which one of the following is true.
+\begin{multicols}{3}
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+\TwoF
+\end{itemize}
+\end{multicols}
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 2f Explanation: \TwoFExplanation \end{minipage}}\\
+}
+\end{question}
+
+\begin{question}[2]
+Assume the first variable we eliminate is $E$ and the resulting factor is $l_1(B,+g)$. Mark which one of the following is true.
+\begin{multicols}{3}
+\begin{itemize}[label=, itemsep=12pt, topsep=12pt]
+\TwoG
+\end{itemize}
+\end{multicols}
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 2g Explanation: \TwoGExplanation \end{minipage}}\\
+}
+\end{question}
+
+
+\begin{question}[4]
+In the smaller examples in (a) through (g) you will have observed that
+sometimes a variable can be eliminated without knowing any of the CPTs.
+This means that variable's CPT does not affect the answer to the
+probabilistic inference query and that variable can be removed from the graph for
+the purposes of that probabilistic inference query.  Now consider the following,
+larger Bayes' net with the query $P(Q|+e)$.\\
+
+
+\begin{figure}[4]
+\centering
+    \includegraphics[width=0.5\textwidth]{figures/FA12-MT2-Elimination3V3.pdf}
+\end{figure}
+Mark all of the variables whose CPTs do \textit{not} affect the value of $P(Q|+e)$:
+
+\begin{center}
+\begin{tabular}{lllll}
+\TwoH
+\end{tabular}
+\end{center}
+\solution{\vspace{0.5in}}{
+   \fbox{\begin{minipage}[t][2.0cm][t]{18cm} 2h Explanation: \TwoHExplanation \end{minipage}}\\
+}
+\end{question}
+\end{problem}

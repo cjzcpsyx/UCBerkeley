@@ -1,0 +1,190 @@
+%%% Please replace what is within each curly bracket with the correct information below. %%%
+%%% The first field is already filled in for you.  %%%
+\def\ClassName {CS188} % Your course 
+\def\NameLast {Chen}  % Your last name
+\def\NameFirst {Jianzhong}  % Your first name
+\def\SID{23478230}  % Your SID
+\def\Email{chenjianzhong@berkeley.edu} % Your pandagrader email
+\def\Collaborators{None} % Any collaborators
+
+%%% begin 1a %%% replace mcqb with mcqs to bubble in. 
+%%% If you choose None of the Above, complete the equation.
+\def\OneA{
+
+\mcqs $L^*(s) = \max_a \min_{s' \in C(s,a)} [R(s,a,s') + \gamma * L^*(s')]$ \\\\ & 
+\mcqb $L^*(s) = \min_a \max_{s' \in C(s,a)} [R(s,a,s') + \gamma * L^*(s')]$ \\\\ & 
+\mcqb $L^*(s) = \max_a \sum_{s' \in C(s,a)} {T(s,a,s')[R(s,a,s')} + \gamma * \min_{s'' \in C(s', a')} {L^*(s'')}]$\\\\ &
+\mcqb $L^*(s) = \max_a [{R(s,a,s') + \gamma * \min_{s' \in C(s,a)} {L^*(s')}}]$\\\\
+& \mcqb None of the Above: 
+   \solution{\vspace{1cm}}{
+    \fbox{\begin{minipage}[c][1.0cm][c]{12cm} $L^*(s)= $          \end{minipage}}
+}
+}
+
+%%% end 1a %%% 
+
+
+%%% begin 1b %%% Complete the equation.
+\def\OneB{
+$L_{i+1}(s)= \max_{a}\min_{s'\in {C(s,a)}}[R(s,a,s') + \gamma * L_{i}(s')]$
+}   
+%%% end 1b %%%
+
+%%% begin 1c %%% replace mcqb with mcqs to bubble in. 
+%%% If you choose None of the Above, complete the equation.
+\def\OneC{
+\mcqb $M^*(s,a) = R(s) + \min_{s' \in C(s,a)} [{R(s') + \gamma \max_{a'} {M^*(s', a')}}]$\\\\ & 
+\mcqb $M^*(s,a) = R(s) + \sum_{s' \in C(s,a)} {T(s,a,s')[R(s) + \gamma  \min_{a'} {M^*(s', a')}]}$ \\\\ & 
+\mcqb $M^*(s,a) = \min_{s' \in C(s,a)} [{R(s') + \gamma  max_{a'} {M^*(s', a')}}] $\\\\ & 
+\mcqb $M^*(s,a) = \max_{s' \in C(s,a)} [{R(s) + \gamma  min_{a'} {M^*(s', a')}}] $\\\\ & 
+\mcqs None of the Above: 
+   \solution{\vspace{1cm}}{
+    \fbox{\begin{minipage}[c][1.0cm][c]{12cm} $M^*(s,a)= R(s)+min_{s'\in C(s,a)}[\gamma * max_{a'}M^*(s',a')]$          \end{minipage}}
+}
+}
+
+%%% end 1c %%%
+
+%%% begin 1d %%%
+%%% Put \solutioncircle within the curly braces corresponding to the correct solution.
+\def\OneDi{}
+\def\OneDii{\solutioncircle}
+\def\OneDiii{}
+\def\OneDiv{}
+
+%%% end 1d %%%
+
+%%% begin 1e %%% keep this short
+\def\OneE{minmax}
+%%% end 1e %%%
+
+%%% begin 1f %%% keep this short
+\def\OneF{Minimax search with depth limit and evaluation function.}
+%%% end 1f %%%
+
+%%% begin 2a %%%
+\def\TwoA{Yes}
+%%% end 2a %%%
+
+%%% begin 2b %%%
+\def\TwoB{No. It will converge to the Q-value function of a certain policy, not necessarily the optimal Q-value function.}
+%%% end 2b %%%
+
+%%%%%%%%%%%%%%%%%%%%%% DO NOT CHANGE ANYTHING BELOW THIS LINE %%%%%%%%%%%%%%%%%%%%%%%%%
+\def \showSolutions {} 
+\documentclass[twoside]{article}
+
+\usepackage{class}
+%\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{amsmath,mathrsfs}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{mathcomp}
+\usepackage{tabularx}
+\usepackage{wasysym}
+\usepackage{pbox}
+
+% Bubbles for multiple choice questions
+\newcommand{\mcqbubble}{\bigcirc}
+\newcommand{\mcqbubblefill}{\Large\newmoon}
+
+% shorthand
+\newcommand{\mcqb}{$\bigcirc$\ \ }
+\newcommand{\mcqs}{\solution{\mcqb}{$\Large\newmoon$\ \ }}
+
+% pruning
+\newcommand{\prune}{\includegraphics[width=0.2in]{figures/red_x}}
+% title is Written HW5
+\title{Written HW5}
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+
+\smallskip
+\smallskip
+\textbf{INSTRUCTIONS}
+
+\begin{itemize}
+\item \textbf{Due:} Monday, March 3rd 2014 11:59 PM
+\item \textbf{Policy:} Can be solved in groups (acknowledge collaborators) but must
+be written up individually. However,
+we strongly encourage you to first work alone for about 30 minutes total in order to simulate an exam environment.  Late homework
+will not be accepted.
+\item \textbf{Format:}
+You must solve the questions on this handout (either through a pdf annotator, or by printing, then scanning; we recommend the latter to match exam setting). Alternatively, you can typeset a pdf on your own that has answers appearing in the same space (check edx/piazza for latex templating files and instructions).
+\textbf{Make sure that your answers (typed or handwritten) are within the
+dedicated regions for each question/part.  If you do not follow this format, we may deduct points.}
+
+\item \textbf{How to submit:}  Go to www.pandagrader.com. Log in and click on the
+class CS188 Spring 2014. Click
+on the submission titled Written HW 4 and upload your pdf containing your answers. If this is your first time using
+pandagrader, you will have to set your password before logging in the
+first time.  To do so, click on "Forgot your password" on the login
+page, and enter your email address on file with the registrar's office
+(usually your @berkeley.edu email address). You will then receive an
+email with a link to reset your password.
+
+\end{itemize}
+
+
+\begin{center}
+\begin{tabular}{|r|c|}
+\hline
+\begin{minipage}{3cm}~\\Last Name~\\~\\\end{minipage} & \begin{minipage}[c][1cm][c]{8cm} ~ \NameLast \end{minipage}  \\
+\hline
+\begin{minipage}{3cm}~\\First Name~\\~\\\end{minipage} & \NameFirst \\
+\hline
+\begin{minipage}{3cm}~\\SID~\\~\\\end{minipage} & \SID \\
+\hline
+\begin{minipage}{3cm}~\\Email~\\~\\\end{minipage} & \Email \\
+\hline
+\begin{minipage}{3cm}~\\Collaborators~\\~\\\end{minipage} & \Collaborators \\
+\hline
+
+\end{tabular}
+\end{center}
+
+
+
+\vfill
+
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+\smallskip
+
+\begin{center}
+{\bf For staff use only}\\
+\begin{Large}
+\begin{tabular}{|r|r|r|}
+\hline
+Q. 1 & Q. 2 & Total\\
+\hline
+
+\quad/22 &\quad/8 &\qquad/30 \\
+\hline
+\end{tabular}\end{Large}
+\end{center}
+
+
+\newpage
+\input{q1}
+\newpage
+\input{q2}
+\newpage
+
+
+\end{document}
